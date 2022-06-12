@@ -1,0 +1,573 @@
+{
+  "id": "686e6dec-59fe-43c3-bb0b-2513e7b5dd2d",
+  "name": "FlugVerwaltung",
+  "timestamp": "2022-05-24T16:54:52.995Z",
+  "collection_id": "dc2d2428-2365-4a34-8c5e-422037d6c14b",
+  "folder_id": 0,
+  "environment_id": "0",
+  "totalPass": 30,
+  "totalFail": 0,
+  "results": [
+    {
+      "id": "9724a3db-f738-44ce-9e05-921e228d8fef",
+      "name": "Flug List",
+      "url": "http://localhost:8080/FlugVerwaltung-1.0/api/flug/list",
+      "time": 98,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Status code ist 200": true,
+        "Response is JSON": true
+      },
+      "testPassFailCounts": {
+        "Status code ist 200": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Response is JSON": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        98
+      ],
+      "allTests": [
+        {
+          "Status code ist 200": true,
+          "Response is JSON": true
+        }
+      ]
+    },
+    {
+      "id": "f42cda2f-e0a5-4834-acf1-7fcd488b0428",
+      "name": "Flug List Sortiert",
+      "url": "http://localhost:8080/FlugVerwaltung-1.0/api/flug/list?sort=abflugsZeit",
+      "time": 37,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Status code ist 200": true,
+        "Response is JSON": true
+      },
+      "testPassFailCounts": {
+        "Status code ist 200": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Response is JSON": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        37
+      ],
+      "allTests": [
+        {
+          "Status code ist 200": true,
+          "Response is JSON": true
+        }
+      ]
+    },
+    {
+      "id": "6bf392c9-6178-40cf-84b8-aaa0ff7a2578",
+      "name": "Flug List Sortiert Fehlerhaft",
+      "url": "http://localhost:8080/FlugVerwaltung-1.0/api/flug/list?sort=fehler",
+      "time": 16,
+      "responseCode": {
+        "code": 404,
+        "name": "Not Found"
+      },
+      "tests": {
+        "Status code ist 404": true,
+        "Response is Error": true
+      },
+      "testPassFailCounts": {
+        "Status code ist 404": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Response is Error": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        16
+      ],
+      "allTests": [
+        {
+          "Status code ist 404": true,
+          "Response is Error": true
+        }
+      ]
+    },
+    {
+      "id": "8996a500-d979-4aa0-9c10-23b8487d9cc6",
+      "name": "Flug Get mit Parameter",
+      "url": "http://localhost:8080/FlugVerwaltung-1.0/api/flug/get?uuid=3247c340-c712-402e-b400-0a23a9368c97",
+      "time": 14,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Status code ist 200": true,
+        "Response is JSON": true
+      },
+      "testPassFailCounts": {
+        "Status code ist 200": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Response is JSON": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        14
+      ],
+      "allTests": [
+        {
+          "Status code ist 200": true,
+          "Response is JSON": true
+        }
+      ]
+    },
+    {
+      "id": "27a992bf-5166-4992-a148-42d8d58e591b",
+      "name": "Flug Get Fehler",
+      "url": "http://localhost:8080/FlugVerwaltung-1.0/api/flug/get?uuid=123",
+      "time": 14,
+      "responseCode": {
+        "code": 404,
+        "name": "Not Found"
+      },
+      "tests": {
+        "Status code ist 404": true,
+        "Response is Error": true
+      },
+      "testPassFailCounts": {
+        "Status code ist 404": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Response is Error": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        14
+      ],
+      "allTests": [
+        {
+          "Status code ist 404": true,
+          "Response is Error": true
+        }
+      ]
+    },
+    {
+      "id": "0a581667-db5b-4e11-8150-e0620cf8bc05",
+      "name": "Flugzeug List",
+      "url": "http://localhost:8080/FlugVerwaltung-1.0/api/flugzeug/list",
+      "time": 22,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Status code ist 200": true,
+        "Response is JSON": true
+      },
+      "testPassFailCounts": {
+        "Status code ist 200": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Response is JSON": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        22
+      ],
+      "allTests": [
+        {
+          "Status code ist 200": true,
+          "Response is JSON": true
+        }
+      ]
+    },
+    {
+      "id": "08a2630d-fe9b-436e-9cc5-d01cbf597089",
+      "name": "Flugzeug List Sortiert",
+      "url": "http://localhost:8080/FlugVerwaltung-1.0/api/flugzeug/list?sort=modelname",
+      "time": 19,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Status code ist 200": true,
+        "Response is JSON": true
+      },
+      "testPassFailCounts": {
+        "Status code ist 200": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Response is JSON": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        19
+      ],
+      "allTests": [
+        {
+          "Status code ist 200": true,
+          "Response is JSON": true
+        }
+      ]
+    },
+    {
+      "id": "fd4981ef-5b9c-43fd-9155-ac58b612932a",
+      "name": "Flugzeug List Sortiert Fehlerhaft",
+      "url": "http://localhost:8080/FlugVerwaltung-1.0/api/flugzeug/list?sort=fehler",
+      "time": 24,
+      "responseCode": {
+        "code": 404,
+        "name": "Not Found"
+      },
+      "tests": {
+        "Status code ist 404": true,
+        "Response is Error": true
+      },
+      "testPassFailCounts": {
+        "Status code ist 404": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Response is Error": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        24
+      ],
+      "allTests": [
+        {
+          "Status code ist 404": true,
+          "Response is Error": true
+        }
+      ]
+    },
+    {
+      "id": "05b6f088-b4ef-4a78-995c-4e8091897fd6",
+      "name": "Flugzeug Get mit Parameter",
+      "url": "http://localhost:8080/FlugVerwaltung-1.0/api/flugzeug/get?uuid=707ece68-9e0f-4f26-8eae-235b52632fd0",
+      "time": 15,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Status code ist 200": true,
+        "Response is JSON": true
+      },
+      "testPassFailCounts": {
+        "Status code ist 200": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Response is JSON": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        15
+      ],
+      "allTests": [
+        {
+          "Status code ist 200": true,
+          "Response is JSON": true
+        }
+      ]
+    },
+    {
+      "id": "86069046-b7e7-4051-8e64-94bdf1396137",
+      "name": "Flugzeug Get Fehler",
+      "url": "http://localhost:8080/FlugVerwaltung-1.0/api/flugzeug/get?uuid=123",
+      "time": 17,
+      "responseCode": {
+        "code": 404,
+        "name": "Not Found"
+      },
+      "tests": {
+        "Status code ist 404": true,
+        "Response is Error": true
+      },
+      "testPassFailCounts": {
+        "Status code ist 404": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Response is Error": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        17
+      ],
+      "allTests": [
+        {
+          "Status code ist 404": true,
+          "Response is Error": true
+        }
+      ]
+    },
+    {
+      "id": "ee85559e-25ef-4a39-ae8c-4b0faf1e79aa",
+      "name": "Flughafen List",
+      "url": "http://localhost:8080/FlugVerwaltung-1.0/api/flughafen/list",
+      "time": 29,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Status code ist 200": true,
+        "Response is JSON": true
+      },
+      "testPassFailCounts": {
+        "Status code ist 200": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Response is JSON": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        29
+      ],
+      "allTests": [
+        {
+          "Status code ist 200": true,
+          "Response is JSON": true
+        }
+      ]
+    },
+    {
+      "id": "52160e94-971a-45ee-9a1e-ca10f12ee7ca",
+      "name": "Flughafen List Sortiert",
+      "url": "http://localhost:8080/FlugVerwaltung-1.0/api/flughafen/list?sort=ort",
+      "time": 10,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Status code ist 200": true,
+        "Response is JSON": true
+      },
+      "testPassFailCounts": {
+        "Status code ist 200": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Response is JSON": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        10
+      ],
+      "allTests": [
+        {
+          "Status code ist 200": true,
+          "Response is JSON": true
+        }
+      ]
+    },
+    {
+      "id": "9ee1a88b-e968-46d7-9350-23ae3355f946",
+      "name": "Flugzhafen List Sortiert Fehlerhaft",
+      "url": "http://localhost:8080/FlugVerwaltung-1.0/api/flughafen/list?sort=fehler",
+      "time": 15,
+      "responseCode": {
+        "code": 404,
+        "name": "Not Found"
+      },
+      "tests": {
+        "Status code ist 404": true,
+        "Response is Error": true
+      },
+      "testPassFailCounts": {
+        "Status code ist 404": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Response is Error": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        15
+      ],
+      "allTests": [
+        {
+          "Status code ist 404": true,
+          "Response is Error": true
+        }
+      ]
+    },
+    {
+      "id": "660d92af-cec1-45ca-852f-3ea543d983cb",
+      "name": "Flughafen Get mit Parameter",
+      "url": "http://localhost:8080/FlugVerwaltung-1.0/api/flughafen/get?uuid=730add4e-276a-44cf-8a02-c6384e77dd4e",
+      "time": 20,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Status code ist 200": true,
+        "Response is JSON": true
+      },
+      "testPassFailCounts": {
+        "Status code ist 200": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Response is JSON": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        20
+      ],
+      "allTests": [
+        {
+          "Status code ist 200": true,
+          "Response is JSON": true
+        }
+      ]
+    },
+    {
+      "id": "b568b4c0-a07f-4756-bd04-b3101546ea3e",
+      "name": "Flughafen Get Fehler",
+      "url": "http://localhost:8080/FlugVerwaltung-1.0/api/flughafen/get?uuid=123",
+      "time": 21,
+      "responseCode": {
+        "code": 404,
+        "name": "Not Found"
+      },
+      "tests": {
+        "Status code ist 404": true,
+        "Response is JSON": true
+      },
+      "testPassFailCounts": {
+        "Status code ist 404": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Response is JSON": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        21
+      ],
+      "allTests": [
+        {
+          "Status code ist 404": true,
+          "Response is JSON": true
+        }
+      ]
+    }
+  ],
+  "count": 1,
+  "totalTime": 371,
+  "collection": {
+    "requests": [
+      {
+        "id": "9724a3db-f738-44ce-9e05-921e228d8fef",
+        "method": "GET"
+      },
+      {
+        "id": "f42cda2f-e0a5-4834-acf1-7fcd488b0428",
+        "method": "GET"
+      },
+      {
+        "id": "6bf392c9-6178-40cf-84b8-aaa0ff7a2578",
+        "method": "GET"
+      },
+      {
+        "id": "8996a500-d979-4aa0-9c10-23b8487d9cc6",
+        "method": "GET"
+      },
+      {
+        "id": "27a992bf-5166-4992-a148-42d8d58e591b",
+        "method": "GET"
+      },
+      {
+        "id": "0a581667-db5b-4e11-8150-e0620cf8bc05",
+        "method": "GET"
+      },
+      {
+        "id": "08a2630d-fe9b-436e-9cc5-d01cbf597089",
+        "method": "GET"
+      },
+      {
+        "id": "fd4981ef-5b9c-43fd-9155-ac58b612932a",
+        "method": "GET"
+      },
+      {
+        "id": "05b6f088-b4ef-4a78-995c-4e8091897fd6",
+        "method": "GET"
+      },
+      {
+        "id": "86069046-b7e7-4051-8e64-94bdf1396137",
+        "method": "GET"
+      },
+      {
+        "id": "ee85559e-25ef-4a39-ae8c-4b0faf1e79aa",
+        "method": "GET"
+      },
+      {
+        "id": "52160e94-971a-45ee-9a1e-ca10f12ee7ca",
+        "method": "GET"
+      },
+      {
+        "id": "9ee1a88b-e968-46d7-9350-23ae3355f946",
+        "method": "GET"
+      },
+      {
+        "id": "660d92af-cec1-45ca-852f-3ea543d983cb",
+        "method": "GET"
+      },
+      {
+        "id": "b568b4c0-a07f-4756-bd04-b3101546ea3e",
+        "method": "GET"
+      }
+    ]
+  }
+}

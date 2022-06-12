@@ -1,0 +1,56 @@
+[
+  {
+    "flugzeugUUID": "685507cb-ea5f-432b-beb8-45d43ed52c2a",
+    "fluggesellschaft": "Singavera Airways",
+    "modelname": "Boeing 340",
+    "flugnummer": "FP 316"
+  },
+  {
+    "flugzeugUUID": "d49ac07f-27c3-423d-bd57-c95e193d3c2a",
+    "fluggesellschaft": "Geofarm Airlines",
+    "modelname": "Airbus 760",
+    "flugnummer": "CQ 884"
+  },
+  {
+    "flugzeugUUID": "707ece68-9e0f-4f26-8eae-235b52632fd0",
+    "fluggesellschaft": "Daido Airlines",
+    "modelname": "Airbus 470",
+    "flugnummer": "XM 587"
+  },
+  {
+    "flugzeugUUID": "7cfa9bd8-c5ff-4d49-ba9c-df868d10fb21",
+    "fluggesellschaft": "Isoswitch Airways",
+    "modelname": "Airbus 670",
+    "flugnummer": "BJ 177"
+  },
+  {
+    "flugzeugUUID": "f8b6ce2f-a59e-4dd6-a6f9-cc4df8c9831d",
+    "fluggesellschaft": "Exospeed Air",
+    "modelname": "Boeing 360",
+    "flugnummer": "UU 843"
+  },
+  {
+    "flugzeugUUID": "33088636-e578-423f-bd64-bd44ffbdc45f",
+    "fluggesellschaft": "Portico Airways",
+    "modelname": "Airbus 370",
+    "flugnummer": "JF 707"
+  },
+  {
+    "flugzeugUUID": "115d5059-ecc4-4a24-bd8b-3816a5988cc8",
+    "fluggesellschaft": "Decratex Airways",
+    "modelname": "Airbus 640",
+    "flugnummer": "ZH 147"
+  },
+  {
+    "flugzeugUUID": "a4490b1c-8cf8-4ebd-8ec1-5bdde4237490",
+    "fluggesellschaft": "Veraq Air",
+    "modelname": "Airbus 560",
+    "flugnummer": "CD 274"
+  },
+  {
+    "flugzeugUUID": "e3dc29b1-0307-45a1-a70e-277a4e9e0613",
+    "fluggesellschaft": "Hometown Air",
+    "modelname": "Airbus 530",
+    "flugnummer": "AU 733"
+  }
+]

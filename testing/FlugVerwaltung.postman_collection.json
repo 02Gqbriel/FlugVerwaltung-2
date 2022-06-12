@@ -1,0 +1,667 @@
+{
+  "info": {
+    "_postman_id": "dc2d2428-2365-4a34-8c5e-422037d6c14b",
+    "name": "FlugVerwaltung",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Flug List",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code ist 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Response is JSON', function () {",
+              "    pm.response.to.be.json;",
+              "});",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/FlugVerwaltung-1.0/api/flug/list",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "FlugVerwaltung-1.0",
+            "api",
+            "flug",
+            "list"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Flug List Sortiert",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code ist 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Response is JSON', function () {",
+              "    pm.response.to.be.json;",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/FlugVerwaltung-1.0/api/flug/list?sort=abflugsZeit",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "FlugVerwaltung-1.0",
+            "api",
+            "flug",
+            "list"
+          ],
+          "query": [
+            {
+              "key": "sort",
+              "value": "abflugsZeit"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Flug List Sortiert Fehlerhaft",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code ist 404\", function () {",
+              "    pm.response.to.have.status(404);",
+              "});",
+              "",
+              "pm.test('Response is Error', function () {",
+              "    pm.response.to.be.error;",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/FlugVerwaltung-1.0/api/flug/list?sort=fehler",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "FlugVerwaltung-1.0",
+            "api",
+            "flug",
+            "list"
+          ],
+          "query": [
+            {
+              "key": "sort",
+              "value": "fehler"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Flug Get mit Parameter",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code ist 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Response is JSON', function () {",
+              "    pm.response.to.be.json;",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/FlugVerwaltung-1.0/api/flug/get?uuid=3247c340-c712-402e-b400-0a23a9368c97",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "FlugVerwaltung-1.0",
+            "api",
+            "flug",
+            "get"
+          ],
+          "query": [
+            {
+              "key": "uuid",
+              "value": "3247c340-c712-402e-b400-0a23a9368c97"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Flug Get Fehler",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code ist 404\", function () {",
+              "    pm.response.to.have.status(404);",
+              "});",
+              "",
+              "pm.test('Response is Error', function () {",
+              "    pm.response.to.be.error;",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/FlugVerwaltung-1.0/api/flug/get?uuid=123",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "FlugVerwaltung-1.0",
+            "api",
+            "flug",
+            "get"
+          ],
+          "query": [
+            {
+              "key": "uuid",
+              "value": "123"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Flugzeug List",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code ist 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Response is JSON', function () {",
+              "    pm.response.to.be.json;",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/FlugVerwaltung-1.0/api/flugzeug/list",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "FlugVerwaltung-1.0",
+            "api",
+            "flugzeug",
+            "list"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Flugzeug List Sortiert",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code ist 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Response is JSON', function () {",
+              "    pm.response.to.be.json;",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/FlugVerwaltung-1.0/api/flugzeug/list?sort=modelname",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "FlugVerwaltung-1.0",
+            "api",
+            "flugzeug",
+            "list"
+          ],
+          "query": [
+            {
+              "key": "sort",
+              "value": "modelname"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Flugzeug List Sortiert Fehlerhaft",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code ist 404\", function () {",
+              "    pm.response.to.have.status(404);",
+              "});",
+              "",
+              "pm.test('Response is Error', function () {",
+              "    pm.response.to.be.error;",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/FlugVerwaltung-1.0/api/flugzeug/list?sort=fehler",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "FlugVerwaltung-1.0",
+            "api",
+            "flugzeug",
+            "list"
+          ],
+          "query": [
+            {
+              "key": "sort",
+              "value": "fehler"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Flugzeug Get mit Parameter",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code ist 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Response is JSON', function () {",
+              "    pm.response.to.be.json;",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/FlugVerwaltung-1.0/api/flugzeug/get?uuid=707ece68-9e0f-4f26-8eae-235b52632fd0",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "FlugVerwaltung-1.0",
+            "api",
+            "flugzeug",
+            "get"
+          ],
+          "query": [
+            {
+              "key": "uuid",
+              "value": "707ece68-9e0f-4f26-8eae-235b52632fd0"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Flugzeug Get Fehler",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code ist 404\", function () {",
+              "    pm.response.to.have.status(404);",
+              "});",
+              "",
+              "pm.test('Response is Error', function () {",
+              "    pm.response.to.be.error;",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/FlugVerwaltung-1.0/api/flugzeug/get?uuid=123",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "FlugVerwaltung-1.0",
+            "api",
+            "flugzeug",
+            "get"
+          ],
+          "query": [
+            {
+              "key": "uuid",
+              "value": "123"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Flughafen List",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code ist 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Response is JSON', function () {",
+              "    pm.response.to.be.json;",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/FlugVerwaltung-1.0/api/flughafen/list",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "FlugVerwaltung-1.0",
+            "api",
+            "flughafen",
+            "list"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Flughafen List Sortiert",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code ist 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Response is JSON', function () {",
+              "    pm.response.to.be.json;",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/FlugVerwaltung-1.0/api/flughafen/list?sort=ort",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "FlugVerwaltung-1.0",
+            "api",
+            "flughafen",
+            "list"
+          ],
+          "query": [
+            {
+              "key": "sort",
+              "value": "ort"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Flugzhafen List Sortiert Fehlerhaft",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code ist 404\", function () {",
+              "    pm.response.to.have.status(404);",
+              "});",
+              "",
+              "pm.test('Response is Error', function () {",
+              "    pm.response.to.be.error;",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/FlugVerwaltung-1.0/api/flughafen/list?sort=fehler",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "FlugVerwaltung-1.0",
+            "api",
+            "flughafen",
+            "list"
+          ],
+          "query": [
+            {
+              "key": "sort",
+              "value": "fehler"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Flughafen Get mit Parameter",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code ist 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Response is JSON', function () {",
+              "    pm.response.to.be.json;",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/FlugVerwaltung-1.0/api/flughafen/get?uuid=730add4e-276a-44cf-8a02-c6384e77dd4e",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "FlugVerwaltung-1.0",
+            "api",
+            "flughafen",
+            "get"
+          ],
+          "query": [
+            {
+              "key": "uuid",
+              "value": "730add4e-276a-44cf-8a02-c6384e77dd4e"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Flughafen Get Fehler",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code ist 404\", function () {",
+              "    pm.response.to.have.status(404);",
+              "});",
+              "",
+              "pm.test('Response is JSON', function () {",
+              "    pm.response.to.be.error;",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/FlugVerwaltung-1.0/api/flughafen/get?uuid=123",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "FlugVerwaltung-1.0",
+            "api",
+            "flughafen",
+            "get"
+          ],
+          "query": [
+            {
+              "key": "uuid",
+              "value": "123"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "flugUUID": "3247c340-c712-402e-b400-0a23a9368c97",
+    "ankunftsZeit": "12:30",
+    "abflugsZeit": "11:00"
+  },
+  {
+    "flugUUID": "3247c340-c712-402e-b400-0a23a9368c11",
+    "ankunftsZeit": "13:30",
+    "abflugsZeit": "12:00"
+  },
+  {
+    "flugUUID": "3247c340-c712-402e-b400-0a23a9368c22",
+    "ankunftsZeit": "12:20",
+    "abflugsZeit": "11:50"
+  },
+  {
+    "flugUUID": "3247c340-c712-402e-b400-0a23a9368c33",
+    "ankunftsZeit": "17:30",
+    "abflugsZeit": "15:00"
+  },
+  {
+    "flugUUID": "3247c340-c712-402e-b400-0a23a9368c44",
+    "ankunftsZeit": "11:45",
+    "abflugsZeit": "10:00"
+  },
+  {
+    "flugUUID": "3247c340-c712-402e-b400-0a23a9368c55",
+    "ankunftsZeit": "12:30",
+    "abflugsZeit": "11:00"
+  },
+  {
+    "flugUUID": "3247c340-c712-402e-b400-0a23a9368c66",
+    "ankunftsZeit": "12:30",
+    "abflugsZeit": "11:00"
+  },
+  {
+    "flugUUID": "3247c340-c712-402e-b400-0a23a9368c77",
+    "ankunftsZeit": "12:30",
+    "abflugsZeit": "11:00"
+  }
+]

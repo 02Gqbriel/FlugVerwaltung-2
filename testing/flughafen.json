@@ -1,0 +1,22 @@
+[
+  {
+    "flughafenUUID": "8a3e86e0-3ddb-42c9-8deb-0f64af449203",
+    "ort": "Neahkahnie"
+  },
+  {
+    "flughafenUUID": "acb90e1e-d4e2-4a68-a3af-da0c04d76030",
+    "ort": "Florence"
+  },
+  {
+    "flughafenUUID": "d32e47b3-5ae3-4857-81ce-5613870a749a",
+    "ort": "Hilltop"
+  },
+  {
+    "flughafenUUID": "730add4e-276a-44cf-8a02-c6384e77dd4e",
+    "ort": "Lloyd"
+  },
+  {
+    "flughafenUUID": "0f92f365-8f2d-4003-bccb-3897eb34f4b8",
+    "ort": "Graniteville"
+  }
+]
