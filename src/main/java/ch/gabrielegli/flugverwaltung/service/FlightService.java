@@ -32,12 +32,12 @@ public class FlightService {
         int status = 200;
 
         if (sort != null) {
-            if (sort == "flightUUID" || sort == "arrivaleTime" || sort == "departureTime") {
+            if (sort.equals("flightUUID") || sort.equals("arrivalTime") || sort.equals("departureTime")) {
                 fluege.sort((f1, f2) -> {
                     switch (sort) {
                         case "flightUUID":
                             return f1.getFlightUUID().compareTo(f2.getFlightUUID());
-                        case "arrivaleTime":
+                        case "arrivalTime":
                             return f1.getArrivalTime().compareTo(f2.getArrivalTime());
                         case "departureTime":
                             return f1.getDepartureTime().compareTo(f2.getDepartureTime());

@@ -17,7 +17,6 @@ import java.util.List;
  */
 @Path("airplane")
 public class AirplaneService {
-    private static int status = 200;
 
     /**
      * Handles incoming get request and returns a list in json format
@@ -30,10 +29,10 @@ public class AirplaneService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response GetAllPlanes(@QueryParam("sort") String sort) {
         List<Airplane> airplanes = DataHandler.getInstance().readAllAirplanes();
-        status = 200;
+        int status = 200;
 
         if (sort != null) {
-            if (sort == "airplaneUUID" || sort == "airline" || sort == "modelName" || sort == "flightNumber") {
+            if (sort.equals("airplaneUUID") || sort.equals("airline") || sort.equals("modelName") || sort.equals("flightNumber")) {
                 airplanes.sort((f1, f2) -> {
                     switch (sort) {
                         case "airplaneUUID":
@@ -72,7 +71,7 @@ public class AirplaneService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response GetOnePlane(@QueryParam("uuid") String uuid) {
         Airplane airplane = DataHandler.getInstance().readAirplaneByUUID(uuid);
-        status = 200;
+        int status = 200;
 
         if (airplane == null) status = 404;
 

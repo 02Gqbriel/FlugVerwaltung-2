@@ -126,7 +126,7 @@ public class DataHandler {
      */
     private void readFlightJSON() {
         try {
-            String path = Config.getProperty("flugJSON");
+            String path = Config.getProperty("flightJSON");
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(path)
             );
@@ -147,7 +147,7 @@ public class DataHandler {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
-                            Config.getProperty("flugzeugJSON")
+                            Config.getProperty("airplaneJSON")
                     )
             );
             ObjectMapper objectMapper = new ObjectMapper();
@@ -168,7 +168,7 @@ public class DataHandler {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
-                            Config.getProperty("flughafenJSON")
+                            Config.getProperty("airportJSON")
                     )
             );
             ObjectMapper objectMapper = new ObjectMapper();

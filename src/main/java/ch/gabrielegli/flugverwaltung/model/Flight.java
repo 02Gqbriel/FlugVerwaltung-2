@@ -1,6 +1,9 @@
 
 package ch.gabrielegli.flugverwaltung.model;
 
+import ch.gabrielegli.flugverwaltung.data.DataHandler;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Die Flight-Klasse welche die Verbindung zwischen dem Airport und dem Airplane herstellt.
  *
@@ -13,8 +16,87 @@ public class Flight {
     private String arrivalTime;
     private String departureTime;
 
+    @JsonIgnore
     private Airplane airplane;
-    private Airport departure, destination;
+    @JsonIgnore
+    private Airport departure;
+
+    @JsonIgnore
+    private Airport destination;
+
+    /**
+     * gets the airportUUID from the Airport-object
+     *
+     * @return airportUUID
+     */
+    @JsonIgnore
+    public String getDepartureUUID() {
+        if (getDeparture() == null) return null;
+        return getDeparture().getAirportUUID();
+    }
+
+    /**
+     * creates a Airport-object without the flightList
+     *
+     * @param airportUUID the key
+     */
+    @JsonIgnore
+    public void setDepartureUUID(String airportUUID) {
+        setDeparture(new Airport());
+        Airport airport = DataHandler.getInstance().readAirportByUUID(airportUUID);
+        getDeparture().setAirportUUID(airport.getAirportUUID());
+        getDeparture().setLocation(airport.getLocation());
+    }
+
+    /**
+     * gets the airportUUID from the Airport-object
+     *
+     * @return airportUUID
+     */
+    @JsonIgnore
+    public String getDestinationUUID() {
+        if (getDestination() == null) return null;
+        return getDestination().getAirportUUID();
+    }
+
+    /**
+     * creates a Airport-object without the flightList
+     *
+     * @param airportUUID the key
+     */
+    @JsonIgnore
+    public void setDestinationUUID(String airportUUID) {
+        setDestination(new Airport());
+        Airport airport = DataHandler.getInstance().readAirportByUUID(airportUUID);
+        getDestination().setAirportUUID(airport.getAirportUUID());
+        getDestination().setLocation(airport.getLocation());
+    }
+
+    /**
+     * gets the airplaneUUID from the Airplane-object
+     *
+     * @return airplaneUUID
+     */
+    @JsonIgnore
+    public String getAirplaneUUID() {
+        if (getAirplane() == null) return null;
+        return getAirplane().getAirplaneUUID();
+    }
+
+    /**
+     * creates a Airplane-object
+     *
+     * @param airplaneUUID the key
+     */
+    @JsonIgnore
+    public void setAirplaneUUID(String airplaneUUID) {
+        setAirplane(new Airplane());
+        Airplane airplane = DataHandler.getInstance().readAirplaneByUUID(airplaneUUID);
+        getAirplane().setAirplaneUUID(airplane.getAirplaneUUID());
+        getAirplane().setAirline(airplane.getAirline());
+        getAirplane().setFlightNumber(airplane.getFlightNumber());
+        getAirplane().setModelName(airplane.getModelName());
+    }
 
     /**
      * Getter
@@ -30,7 +112,7 @@ public class Flight {
      *
      * @param flightUUID
      */
-    public void setFlugUUID(String flightUUID) {
+    public void setFlightUUID(String flightUUID) {
         this.flightUUID = flightUUID;
     }
 
