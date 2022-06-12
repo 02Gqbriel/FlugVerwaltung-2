@@ -4,9 +4,12 @@ import ch.gabrielegli.flugverwaltung.model.Airplane;
 import ch.gabrielegli.flugverwaltung.model.Airport;
 import ch.gabrielegli.flugverwaltung.model.Flight;
 import ch.gabrielegli.flugverwaltung.service.Config;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -16,42 +19,16 @@ import java.util.List;
  * reads and writes the data in the JSON-files
  */
 public class DataHandler {
-    private static DataHandler instance = null;
-    private List<Flight> flightList;
-    private List<Airplane> airplaneList;
-    private List<Airport> airportList;
-
-    /**
-     * private constructor defeats instantiation
-     */
-    private DataHandler() {
-        setAirplaneList(new ArrayList<>());
-        readAirplaneJSON();
-        setFlightList(new ArrayList<>());
-        readFlightJSON();
-        setAirportList(new ArrayList<>());
-        readAirportJSON();
-    }
-
-
-    /**
-     * gets the only instance of this class
-     *
-     * @return instance
-     */
-    public static DataHandler getInstance() {
-        if (instance == null)
-            instance = new DataHandler();
-        return instance;
-    }
-
+    private static List<Flight> flightList = null;
+    private static List<Airplane> airplaneList = null;
+    private static List<Airport> airportList = null;
 
     /**
      * reads all flights
      *
      * @return list of flights
      */
-    public List<Flight> readAllFlights() {
+    public static List<Flight> readAllFlights() {
         return getFlightList();
     }
 
@@ -61,7 +38,7 @@ public class DataHandler {
      * @param flightUUID flightUUID
      * @return the Flight (null=not found)
      */
-    public Flight readFlightByUUID(String flightUUID) {
+    public static Flight readFlightByUUID(String flightUUID) {
         Flight flight = null;
         for (Flight entry : getFlightList()) {
             if (entry.getFlightUUID().equals(flightUUID)) {
@@ -72,11 +49,45 @@ public class DataHandler {
     }
 
     /**
+     * inserts a new flight into the flightList
+     *
+     * @param flight the flug to be saved
+     */
+    public static void insertFlight(Flight flight) {
+        getFlightList().add(flight);
+        writeFlightJSON();
+    }
+
+    /**
+     * updates the flightList
+     */
+    public static void updateFlight() {
+        writeFlightJSON();
+    }
+
+    /**
+     * deletes a flight identified by the flightUUID
+     *
+     * @param flightUUID the key
+     * @return success=true/false
+     */
+    public static boolean deleteFlight(String flightUUID) {
+        Flight flug = readFlightByUUID(flightUUID);
+        if (flug != null) {
+            getFlightList().remove(flug);
+            writeFlightJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * reads all airplanes
      *
      * @return list of airplanes
      */
-    public List<Airplane> readAllAirplanes() {
+    public static List<Airplane> readAllAirplanes() {
         return getAirplaneList();
     }
 
@@ -86,7 +97,7 @@ public class DataHandler {
      * @param airplaneUUID airplaneUUID
      * @return the Airplane (null=not found)
      */
-    public Airplane readAirplaneByUUID(String airplaneUUID) {
+    public static Airplane readAirplaneByUUID(String airplaneUUID) {
         Airplane airplane = null;
         for (Airplane entry : getAirplaneList()) {
             if (entry.getAirplaneUUID().equals(airplaneUUID)) {
@@ -97,11 +108,45 @@ public class DataHandler {
     }
 
     /**
+     * inserts a new airplane into the airplaneList
+     *
+     * @param airplane the airplane to be saved
+     */
+    public static void insertAirplane(Airplane airplane) {
+        getAirplaneList().add(airplane);
+        writeAirplaneJSON();
+    }
+
+    /**
+     * updates the airplaneList
+     */
+    public static void updateAirplane() {
+        writeAirplaneJSON();
+    }
+
+    /**
+     * deletes a airplane identified by the airplaneUUID
+     *
+     * @param airplaneUUID the key
+     * @return success=true/false
+     */
+    public static boolean deleteAirplane(String airplaneUUID) {
+        Airplane airplane = readAirplaneByUUID(airplaneUUID);
+        if (airplane != null) {
+            getAirplaneList().remove(airplane);
+            writeAirplaneJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * reads all Airport
      *
      * @return list of flughafen
      */
-    public List<Airport> readAllAirport() {
+    public static List<Airport> readAllAirport() {
         return getAirportList();
     }
 
@@ -111,7 +156,7 @@ public class DataHandler {
      * @param airportUUID airportUUID
      * @return the Airport (null=not found)
      */
-    public Airport readAirportByUUID(String airportUUID) {
+    public static Airport readAirportByUUID(String airportUUID) {
         Airport airport = null;
         for (Airport entry : getAirportList()) {
             if (entry.getAirportUUID().equals(airportUUID)) {
@@ -122,9 +167,43 @@ public class DataHandler {
     }
 
     /**
+     * inserts a new airport into the airportList
+     *
+     * @param airport the airport to be saved
+     */
+    public static void insertAirport(Airport airport) {
+        getAirportList().add(airport);
+        writeAirportJSON();
+    }
+
+    /**
+     * updates the airportList
+     */
+    public static void updateAirport() {
+        writeAirportJSON();
+    }
+
+    /**
+     * deletes a airport identified by the airportUUID
+     *
+     * @param airportUUID the key
+     * @return success=true/false
+     */
+    public static boolean deleteAirport(String airportUUID) {
+        Airport airport = readAirportByUUID(airportUUID);
+        if (airport != null) {
+            getAirportList().remove(airport);
+            writeAirportJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * reads the flights from the JSON-file
      */
-    private void readFlightJSON() {
+    private static void readFlightJSON() {
         try {
             String path = Config.getProperty("flightJSON");
             byte[] jsonData = Files.readAllBytes(
@@ -141,9 +220,28 @@ public class DataHandler {
     }
 
     /**
+     * writes the flightList to the JSON-file
+     */
+    private static void writeFlightJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String flugPath = Config.getProperty("flightJSON");
+        try {
+            fileOutputStream = new FileOutputStream(flugPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getFlightList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
      * reads the flugzeugs from the JSON-file
      */
-    private void readAirplaneJSON() {
+    private static void readAirplaneJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -160,11 +258,30 @@ public class DataHandler {
         }
     }
 
+    /**
+     * writes the airplaneList to the JSON-file
+     */
+    private static void writeAirplaneJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String flugzeugPath = Config.getProperty("flugzeugJSON");
+        try {
+            fileOutputStream = new FileOutputStream(flugzeugPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getAirplaneList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
 
     /**
      * reads the flughafen from the JSON-file
      */
-    private void readAirportJSON() {
+    private static void readAirportJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -182,11 +299,36 @@ public class DataHandler {
     }
 
     /**
+     * writes the airportList to the JSON-file
+     */
+    private static void writeAirportJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String flughafenPath = Config.getProperty("flughafenJSON");
+        try {
+            fileOutputStream = new FileOutputStream(flughafenPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getAirportList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
      * gets flightList
      *
      * @return value of flightList
      */
-    private List<Flight> getFlightList() {
+    private static List<Flight> getFlightList() {
+
+        if (flightList == null) {
+            setFlightList(new ArrayList<>());
+            readFlightJSON();
+        }
+
         return flightList;
     }
 
@@ -195,8 +337,8 @@ public class DataHandler {
      *
      * @param flightList the value to set
      */
-    private void setFlightList(List<Flight> flightList) {
-        this.flightList = flightList;
+    private static void setFlightList(List<Flight> flightList) {
+        DataHandler.flightList = flightList;
     }
 
     /**
@@ -204,7 +346,13 @@ public class DataHandler {
      *
      * @return value of airplaneList
      */
-    private List<Airplane> getAirplaneList() {
+    private static List<Airplane> getAirplaneList() {
+
+        if (airplaneList == null) {
+            setAirplaneList(new ArrayList<>());
+            readAirplaneJSON();
+        }
+
         return airplaneList;
     }
 
@@ -213,8 +361,8 @@ public class DataHandler {
      *
      * @param airplaneList the value to set
      */
-    private void setAirplaneList(List<Airplane> airplaneList) {
-        this.airplaneList = airplaneList;
+    private static void setAirplaneList(List<Airplane> airplaneList) {
+        DataHandler.airplaneList = airplaneList;
     }
 
     /**
@@ -222,7 +370,13 @@ public class DataHandler {
      *
      * @return value of airportList
      */
-    private List<Airport> getAirportList() {
+    private static List<Airport> getAirportList() {
+
+        if (airportList == null) {
+            setAirportList(new ArrayList<>());
+            readAirportJSON();
+        }
+
         return airportList;
     }
 
@@ -231,7 +385,7 @@ public class DataHandler {
      *
      * @param airportList the value to set
      */
-    private void setAirportList(List<Airport> airportList) {
-        this.airportList = airportList;
+    private static void setAirportList(List<Airport> airportList) {
+        DataHandler.airportList = airportList;
     }
 }

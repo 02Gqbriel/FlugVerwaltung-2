@@ -3,14 +3,13 @@ package ch.gabrielegli.flugverwaltung.service;
 import ch.gabrielegli.flugverwaltung.data.DataHandler;
 import ch.gabrielegli.flugverwaltung.model.Flight;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.validation.Valid;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Service for the Flight-Class
@@ -28,7 +27,7 @@ public class FlightService {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response GetAllPlanes(@QueryParam("sort") String sort) {
-        List<Flight> fluege = DataHandler.getInstance().readAllFlights();
+        List<Flight> fluege = DataHandler.readAllFlights();
         int status = 200;
 
         if (sort != null) {
@@ -69,7 +68,7 @@ public class FlightService {
     @Path("get")
     @Produces(MediaType.APPLICATION_JSON)
     public Response GetOneAirport(@QueryParam("uuid") String uuid) {
-        Flight flight = DataHandler.getInstance().readFlightByUUID(uuid);
+        Flight flight = DataHandler.readFlightByUUID(uuid);
         int status = 200;
 
         if (flight == null) status = 404;
@@ -79,6 +78,75 @@ public class FlightService {
                 .entity(status == 404 ? new HashMap<String, String>() {{
                     put("MESSAGE", "Not Found");
                 }} : flight)
+                .build();
+    }
+
+    /**
+     * deletes a flight identified by its uuid
+     *
+     * @param uuid the key
+     * @return Response
+     */
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response DeleteOneFlight(@QueryParam("uuid") String uuid) {
+        int status = 200;
+
+        if (!DataHandler.deleteFlight(uuid)) {
+            status = 404;
+        }
+
+        return Response.status(status).entity(status == 404 ? "Not Found" : "Success").build();
+    }
+
+    /**
+     * inserts a new flight
+     *
+     * @param flight flight
+     * @return Response
+     */
+    @POST
+    @Path("create")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response AddOneFlight(
+            @BeanParam @Valid Flight flight
+    ) {
+        if (flight.getFlightUUID() == null) {
+            flight.setFlightUUID(UUID.randomUUID().toString());
+        }
+
+        DataHandler.insertFlight(flight);
+
+        return Response.status(200).entity("Object added").build();
+    }
+
+    /**
+     * updates a new flight
+     *
+     * @param flight flight
+     * @return Response
+     */
+    @PUT
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response UpdateOneFlight(
+            @BeanParam @Valid Flight flight
+    ) {
+        int status = 200;
+        Flight flight2 = DataHandler.readFlightByUUID(flight.getFlightUUID());
+
+        if (flight2 != null) {
+            flight2.setArrivalTime(flight.getArrivalTime());
+            flight2.setDepartureTime(flight.getDepartureTime());
+            DataHandler.updateFlight();
+        } else {
+            status = 401;
+        }
+
+        return Response
+                .status(status)
+                .entity("")
                 .build();
     }
 }

@@ -1,5 +1,10 @@
 package ch.gabrielegli.flugverwaltung.model;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.ws.rs.FormParam;
+
 /**
  * Die Flugzeuge die von Airport zu Airport fliegen.
  *
@@ -8,9 +13,24 @@ package ch.gabrielegli.flugverwaltung.model;
  * @since 24-05-22
  */
 public class Airplane {
+
+    @FormParam("airplaneUUID")
+    @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String airplaneUUID;
+
+    @FormParam("airline")
+    @NotEmpty
+    @Size(min = 6, max = 18)
     private String airline;
+
+    @FormParam("modelName")
+    @NotEmpty
+    @Size(min = 7, max = 12)
     private String modelName;
+
+    @FormParam("flightNumber")
+    @NotEmpty
+    @Size(min = 6, max = 6)
     private String flightNumber;
 
     /**

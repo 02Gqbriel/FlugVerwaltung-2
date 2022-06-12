@@ -4,6 +4,11 @@ package ch.gabrielegli.flugverwaltung.model;
 import ch.gabrielegli.flugverwaltung.data.DataHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.ws.rs.FormParam;
+
 /**
  * Die Flight-Klasse welche die Verbindung zwischen dem Airport und dem Airplane herstellt.
  *
@@ -12,8 +17,18 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * @since 24-05-22
  */
 public class Flight {
+    @FormParam("flightUUID")
+    @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String flightUUID;
+
+    @FormParam("arrivalTime")
+    @NotEmpty
+    @Size(min = 5, max = 5)
     private String arrivalTime;
+
+    @FormParam("departureTime")
+    @NotEmpty
+    @Size(min = 5, max = 5)
     private String departureTime;
 
     @JsonIgnore
@@ -43,7 +58,7 @@ public class Flight {
     @JsonIgnore
     public void setDepartureUUID(String airportUUID) {
         setDeparture(new Airport());
-        Airport airport = DataHandler.getInstance().readAirportByUUID(airportUUID);
+        Airport airport = DataHandler.readAirportByUUID(airportUUID);
         getDeparture().setAirportUUID(airport.getAirportUUID());
         getDeparture().setLocation(airport.getLocation());
     }
@@ -67,7 +82,7 @@ public class Flight {
     @JsonIgnore
     public void setDestinationUUID(String airportUUID) {
         setDestination(new Airport());
-        Airport airport = DataHandler.getInstance().readAirportByUUID(airportUUID);
+        Airport airport = DataHandler.readAirportByUUID(airportUUID);
         getDestination().setAirportUUID(airport.getAirportUUID());
         getDestination().setLocation(airport.getLocation());
     }
@@ -91,7 +106,7 @@ public class Flight {
     @JsonIgnore
     public void setAirplaneUUID(String airplaneUUID) {
         setAirplane(new Airplane());
-        Airplane airplane = DataHandler.getInstance().readAirplaneByUUID(airplaneUUID);
+        Airplane airplane = DataHandler.readAirplaneByUUID(airplaneUUID);
         getAirplane().setAirplaneUUID(airplane.getAirplaneUUID());
         getAirplane().setAirline(airplane.getAirline());
         getAirplane().setFlightNumber(airplane.getFlightNumber());
