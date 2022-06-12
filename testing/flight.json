@@ -1,0 +1,82 @@
+[
+  {
+    "flightUUID": "46c84050-65c8-483a-a21d-b9b258941ea0",
+    "arrivalTime": "09:01",
+    "departureTime": "09:14",
+    "airplaneUUID": "0392e555-3611-42b7-8a86-ddf8a5c20ee1",
+    "departureUUID": "2f6132cc-aad4-43f7-8cf7-3de39de0ef73",
+    "destinationUUID": "81588155-f1c1-42a0-8f6b-d51734191711"
+  },
+  {
+    "flightUUID": "95b17052-9a89-4a9c-97ff-b2243433b146",
+    "arrivalTime": "10:12",
+    "departureTime": "06:51",
+    "airplaneUUID": "8fab1e52-7e6c-402e-bbe5-dd55e7ae3f48",
+    "departureUUID": "2b0f8a13-b150-401c-b4d7-c13aae1ae4d3",
+    "destinationUUID": "3f33a774-4ec8-4e94-97ca-4ff3631adb79"
+  },
+  {
+    "flightUUID": "77dbe5b6-4145-43c8-b1b1-07c6d00ac00a",
+    "arrivalTime": "03:08",
+    "departureTime": "11:02",
+    "airplaneUUID": "c23ec73a-2cc2-4189-80fd-f5a57f769ff8",
+    "departureUUID": "472c62f2-f666-4e14-84cc-c1a41abe488a",
+    "destinationUUID": "7c0cdc4c-82be-4e16-9544-f59a146ec5b2"
+  },
+  {
+    "flightUUID": "9533466f-fb19-4eb9-84ea-b95ef69428dd",
+    "arrivalTime": "10:59",
+    "departureTime": "02:54",
+    "airplaneUUID": "b651500f-b339-41fb-b8f9-a45a9f2adab9",
+    "departureUUID": "366ed010-8a08-4ac3-9b4e-433dd01ba436",
+    "destinationUUID": "457dab61-e76e-4d3c-aa88-ebff16b7140f"
+  },
+  {
+    "flightUUID": "7b91be5e-1db1-41a9-918d-4e045deddacf",
+    "arrivalTime": "10:13",
+    "departureTime": "04:56",
+    "airplaneUUID": "ebc9abe9-ed35-449b-9590-671526596d28",
+    "departureUUID": "a21b776e-4de0-44c4-9a51-86000dbdf120",
+    "destinationUUID": "8ad0f6ec-6877-428f-a3ac-7a79b4ab7720"
+  },
+  {
+    "flightUUID": "9f7bad07-5232-4e89-b700-31886de33801",
+    "arrivalTime": "02:01",
+    "departureTime": "07:48",
+    "airplaneUUID": "97426297-1878-4eb4-80aa-6230c9b6070f",
+    "departureUUID": "0cc6a26c-71c1-400a-823b-13425742792e",
+    "destinationUUID": "744d819a-2699-4145-a2d9-f8a374b9f29c"
+  },
+  {
+    "flightUUID": "85d72eac-a943-465b-8b8e-c49937543ddf",
+    "arrivalTime": "08:14",
+    "departureTime": "04:54",
+    "airplaneUUID": "a949670e-12a9-4f07-9a57-905c9a80326f",
+    "departureUUID": "8ce0eb44-f08b-4e28-b5e8-6ded1272b92f",
+    "destinationUUID": "1f4ca688-ebab-4ef6-acef-e738905da76d"
+  },
+  {
+    "flightUUID": "69edd9ad-310b-4b36-82a1-82f8c01e2a99",
+    "arrivalTime": "02:02",
+    "departureTime": "12:17",
+    "airplaneUUID": "0300f3bb-7c5e-4e7d-8240-e02ec5e3ae34",
+    "departureUUID": "79b3b87b-a078-4715-9975-e4c94547a6a2",
+    "destinationUUID": "5281b837-ad3e-46c6-a1c2-07cc9e088526"
+  },
+  {
+    "flightUUID": "a286c027-8767-4244-8be4-9c5e03f81c76",
+    "arrivalTime": "03:13",
+    "departureTime": "02:16",
+    "airplaneUUID": "53b53d0d-9759-430b-a058-476e1329993e",
+    "departureUUID": "ac69d0b5-5721-4d6f-ba34-4212691314d0",
+    "destinationUUID": "48a9c8b5-35b2-47be-9403-96a7dd59c45b"
+  },
+  {
+    "flightUUID": "a367874a-7aef-4253-bacc-fde66f452176",
+    "arrivalTime": "09:31",
+    "departureTime": "03:40",
+    "airplaneUUID": "091dae9c-b9ea-4d05-bd6a-34d80ecb2892",
+    "departureUUID": "922b37b5-1c48-46e3-bba9-03398ae1bde6",
+    "destinationUUID": "4e527379-7081-4283-8c76-5b76e26b90df"
+  }
+]

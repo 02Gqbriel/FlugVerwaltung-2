@@ -1,0 +1,62 @@
+[
+  {
+    "airplaneUUID": "bbf737c0-93b7-47c2-826c-92f9ff42542f",
+    "airline": "Apextri Air",
+    "modelName": "Airbus A760",
+    "flightNumber": "LX 581"
+  },
+  {
+    "airplaneUUID": "f5251e1e-9fb1-491d-9897-983907cbb72a",
+    "airline": "Virva Airline",
+    "modelName": "Airbus A230",
+    "flightNumber": "LX 267"
+  },
+  {
+    "airplaneUUID": "9c9872f2-04ce-40ec-a43c-d92d3b46650f",
+    "airline": "Lumbrex Air",
+    "modelName": "Airbus A250",
+    "flightNumber": "LX 185"
+  },
+  {
+    "airplaneUUID": "ca965516-32e2-43f3-8c0e-9acd11e918f2",
+    "airline": "Futurity Airline",
+    "modelName": "Boeing 420",
+    "flightNumber": "LX 572"
+  },
+  {
+    "airplaneUUID": "d040a8f8-254d-4da9-9145-6fd762bf101a",
+    "airline": "Playce Airline",
+    "modelName": "Airbus A660",
+    "flightNumber": "LX 376"
+  },
+  {
+    "airplaneUUID": "08d9b8e2-a182-40fa-97f8-2ae0402b939f",
+    "airline": "Isostream Express",
+    "modelName": "Boeing 670",
+    "flightNumber": "LX 402"
+  },
+  {
+    "airplaneUUID": "2a9a7956-ab1a-46c1-aa5f-96c4d52fd535",
+    "airline": "Polarium Air",
+    "modelName": "Boeing 360",
+    "flightNumber": "LX 215"
+  },
+  {
+    "airplaneUUID": "874dc34f-cde6-41d8-80a0-22b5bce6927d",
+    "airline": "Tersanki Airline",
+    "modelName": "Airbus A530",
+    "flightNumber": "LX 361"
+  },
+  {
+    "airplaneUUID": "031a482d-80a1-40f9-aaca-fac6f49e025a",
+    "airline": "Insuron Airline",
+    "modelName": "Boeing 730",
+    "flightNumber": "LX 670"
+  },
+  {
+    "airplaneUUID": "3f482848-eb89-45a3-8095-6c23dfddb454",
+    "airline": "Colaire Airline",
+    "modelName": "Boeing 460",
+    "flightNumber": "LX 588"
+  }
+]

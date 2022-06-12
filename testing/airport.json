@@ -1,0 +1,42 @@
+[
+  {
+    "airportUUID": "56b7b497-1cff-4d5b-9c62-a58e01d0a929",
+    "location": "Smock"
+  },
+  {
+    "airportUUID": "b1126f58-c859-496a-b04b-7fb36c2f1cc2",
+    "location": "Gibbsville"
+  },
+  {
+    "airportUUID": "01967a4e-a766-4b31-a280-1370d3c45327",
+    "location": "Caberfae"
+  },
+  {
+    "airportUUID": "1b411e89-4d0b-47e1-9475-d0c7553b8ce2",
+    "location": "Fairlee"
+  },
+  {
+    "airportUUID": "c63f50fb-4868-40fa-8bf6-29913b498161",
+    "location": "Ruffin"
+  },
+  {
+    "airportUUID": "b3a24683-6359-48a6-9c8c-b92224305775",
+    "location": "Sanford"
+  },
+  {
+    "airportUUID": "2908862c-af3d-4339-96ff-b0b981a83bc8",
+    "location": "Rosburg"
+  },
+  {
+    "airportUUID": "a211ee19-7e4e-49c8-8fce-1a0a9dc4f04a",
+    "location": "Carrizo"
+  },
+  {
+    "airportUUID": "4bc11ced-aa65-4126-b899-cd9f2338e491",
+    "location": "Mathews"
+  },
+  {
+    "airportUUID": "d24689ff-e3ad-41b2-83b0-0eae088251d6",
+    "location": "Camas"
+  }
+]
