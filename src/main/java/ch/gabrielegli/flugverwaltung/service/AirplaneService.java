@@ -143,10 +143,14 @@ public class AirplaneService {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateOneAirplane(
-            @Valid @BeanParam Airplane airplane
+            @Valid @BeanParam Airplane airplane,
+            @FormParam("airplaneUUID")
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}") String uuid
+
     ) {
         int status = 200;
-        Airplane old = DataHandler.readAirplaneByUUID(airplane.getAirplaneUUID());
+        Airplane old = DataHandler.readAirplaneByUUID(uuid);
 
         if (old != null) {
             old.setAirline(airplane.getAirline());

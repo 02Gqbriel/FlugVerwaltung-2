@@ -140,10 +140,13 @@ public class AirportService {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateOneAirport(
-            @Valid @BeanParam Airport airport
+            @Valid @BeanParam Airport airport,
+            @FormParam("airportUUID")
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}") String uuid
     ) {
         int status = 200;
-        Airport oldAirport = DataHandler.readAirportByUUID(airport.getAirportUUID());
+        Airport oldAirport = DataHandler.readAirportByUUID(uuid);
 
         if (oldAirport != null) {
             oldAirport.setLocation(airport.getLocation());

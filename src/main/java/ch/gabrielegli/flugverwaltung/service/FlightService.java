@@ -141,10 +141,13 @@ public class FlightService {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateOneFlight(
-            @BeanParam @Valid Flight flight
+            @BeanParam @Valid Flight flight,
+            @FormParam("flightUUID")
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}") String uuid
     ) {
         int status = 200;
-        Flight flight2 = DataHandler.readFlightByUUID(flight.getFlightUUID());
+        Flight flight2 = DataHandler.readFlightByUUID(uuid);
 
         if (flight2 != null) {
             flight2.setArrivalTime(flight.getArrivalTime());
