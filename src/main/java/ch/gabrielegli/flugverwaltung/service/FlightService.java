@@ -4,6 +4,8 @@ import ch.gabrielegli.flugverwaltung.data.DataHandler;
 import ch.gabrielegli.flugverwaltung.model.Flight;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -45,14 +47,14 @@ public class FlightService {
                     }
                 });
             } else {
-                status = 404;
+                status = 400;
             }
         }
 
 
         return Response
                 .status(status)
-                .entity(status == 404 ? new HashMap<String, String>() {{
+                .entity(status == 400 ? new HashMap<String, String>() {{
                     put("MESSAGE", "Parameter Error: " + sort + " Not Valid Parameter");
                 }} : fluege)
                 .build();
@@ -90,14 +92,17 @@ public class FlightService {
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response DeleteOneFlight(@QueryParam("uuid") String uuid) {
+    public Response DeleteOneFlight(@QueryParam("uuid")
+                                    @NotEmpty
+                                    @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                                            String uuid) {
         int status = 200;
 
         if (!DataHandler.deleteFlight(uuid)) {
             status = 404;
         }
 
-        return Response.status(status).entity(status == 404 ? "Not Found" : "Success").build();
+        return Response.status(status).entity(status == 404 ? "Not Found" : "Object deleted").build();
     }
 
     /**
@@ -141,12 +146,12 @@ public class FlightService {
             flight2.setDepartureTime(flight.getDepartureTime());
             DataHandler.updateFlight();
         } else {
-            status = 401;
+            status = 404;
         }
 
         return Response
                 .status(status)
-                .entity("")
+                .entity(status == 404 ? "Not Found" : "Object updated")
                 .build();
     }
 }

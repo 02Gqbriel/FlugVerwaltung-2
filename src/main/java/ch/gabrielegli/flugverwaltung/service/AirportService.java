@@ -44,14 +44,14 @@ public class AirportService {
                     }
                 });
             } else {
-                status = 404;
+                status = 400;
             }
 
         }
 
         return Response
                 .status(status)
-                .entity(status == 404 ? new HashMap<String, String>() {{
+                .entity(status == 400 ? new HashMap<String, String>() {{
                     put("MESSAGE", "Parameter Error: " + sort + " Not Valid Parameter");
                 }} : flugahafens)
                 .build();
@@ -101,7 +101,7 @@ public class AirportService {
             status = 404;
         }
 
-        return Response.status(status).entity(status == 404 ? "Not Found" : "Success").build();
+        return Response.status(status).entity(status == 404 ? "Not Found" : "Object deleted").build();
     }
 
     /**
@@ -145,12 +145,12 @@ public class AirportService {
             oldAirport.setLocation(airport.getLocation());
             DataHandler.updateAirport();
         } else {
-            status = 401;
+            status = 404;
         }
 
         return Response
                 .status(status)
-                .entity("")
+                .entity(status == 404 ? "Not Found" : "Object updated")
                 .build();
     }
 }
