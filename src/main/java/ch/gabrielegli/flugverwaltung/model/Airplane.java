@@ -1,5 +1,7 @@
 package ch.gabrielegli.flugverwaltung.model;
 
+import ch.gabrielegli.flugverwaltung.util.IsFlightNumber;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -29,8 +31,7 @@ public class Airplane {
     private String modelName;
 
     @FormParam("flightNumber")
-    @NotEmpty
-    @Size(min = 6, max = 6)
+    @IsFlightNumber
     private String flightNumber;
 
     /**

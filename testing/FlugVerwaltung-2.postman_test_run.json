@@ -1,7 +1,7 @@
 {
-  "id": "49cf5bfa-3bcb-43f3-b3b4-de6bf25f2f81",
+  "id": "b603d19a-e82a-479f-b7c9-ced7553e8094",
   "name": "FlugVerwaltung-2",
-  "timestamp": "2022-06-14T17:29:08.463Z",
+  "timestamp": "2022-06-14T18:44:15.651Z",
   "collection_id": "363e6af4-7b33-46d8-9db3-da977cc92f28",
   "folder_id": 0,
   "environment_id": "0",
@@ -12,6 +12,39 @@
       "id": "6b73be19-2d75-45a2-a285-381f0bfcc407",
       "name": "Flight List",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/list",
+      "time": 22,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "status is 200": true,
+        "response is JSON": true
+      },
+      "testPassFailCounts": {
+        "status is 200": {
+          "pass": 1,
+          "fail": 0
+        },
+        "response is JSON": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        22
+      ],
+      "allTests": [
+        {
+          "status is 200": true,
+          "response is JSON": true
+        }
+      ]
+    },
+    {
+      "id": "5417cbfd-8106-4b3c-9617-b3be6e8c10dd",
+      "name": "Flight List sorted",
+      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/list?sort=departureTime",
       "time": 5,
       "responseCode": {
         "code": 200,
@@ -42,43 +75,10 @@
       ]
     },
     {
-      "id": "5417cbfd-8106-4b3c-9617-b3be6e8c10dd",
-      "name": "Flight List sorted",
-      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/list?sort=departureTime",
-      "time": 4,
-      "responseCode": {
-        "code": 200,
-        "name": "OK"
-      },
-      "tests": {
-        "status is 200": true,
-        "response is JSON": true
-      },
-      "testPassFailCounts": {
-        "status is 200": {
-          "pass": 1,
-          "fail": 0
-        },
-        "response is JSON": {
-          "pass": 1,
-          "fail": 0
-        }
-      },
-      "times": [
-        4
-      ],
-      "allTests": [
-        {
-          "status is 200": true,
-          "response is JSON": true
-        }
-      ]
-    },
-    {
       "id": "246b5000-8221-4bda-8ef3-a1a48a95946c",
       "name": "Flight List sorted invalid QueryParam",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/list?sort=fail",
-      "time": 3,
+      "time": 13,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -98,7 +98,7 @@
         }
       },
       "times": [
-        3
+        13
       ],
       "allTests": [
         {
@@ -111,7 +111,7 @@
       "id": "ec9cc198-38c2-46b7-b6f1-26d938097935",
       "name": "Flight Get by UUID",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/get?uuid=69edd9ad-310b-4b36-82a1-82f8c01e2a99",
-      "time": 7,
+      "time": 10,
       "responseCode": {
         "code": 200,
         "name": "OK"
@@ -131,7 +131,7 @@
         }
       },
       "times": [
-        7
+        10
       ],
       "allTests": [
         {
@@ -177,7 +177,7 @@
       "id": "c3427bb3-51e8-47e8-978c-db3fc246a08a",
       "name": "Flight Get by UUID invalid",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/get?uuid=123",
-      "time": 3,
+      "time": 20,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -197,7 +197,7 @@
         }
       },
       "times": [
-        3
+        20
       ],
       "allTests": [
         {
@@ -210,7 +210,7 @@
       "id": "8de762b7-e34c-4e2f-858d-10ad8b887423",
       "name": "Flight Get by UUID empty",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/get?uuid=",
-      "time": 4,
+      "time": 19,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -230,7 +230,7 @@
         }
       },
       "times": [
-        4
+        19
       ],
       "allTests": [
         {
@@ -243,7 +243,7 @@
       "id": "aa432e63-bd8e-44b3-9361-1c5b72fd8445",
       "name": "Flight Create",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/create",
-      "time": 7,
+      "time": 9,
       "responseCode": {
         "code": 200,
         "name": "OK"
@@ -263,7 +263,7 @@
         }
       },
       "times": [
-        7
+        9
       ],
       "allTests": [
         {
@@ -276,7 +276,7 @@
       "id": "657210ad-0058-45f2-a700-36c833aae203",
       "name": "Flight Create flightUUID invalid",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/create",
-      "time": 4,
+      "time": 7,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -296,7 +296,7 @@
         }
       },
       "times": [
-        4
+        7
       ],
       "allTests": [
         {
@@ -309,7 +309,7 @@
       "id": "2880d324-3fbc-41ee-8846-1338116c44e1",
       "name": "Flight Create arrivalTime to long",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/create",
-      "time": 4,
+      "time": 5,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -329,7 +329,7 @@
         }
       },
       "times": [
-        4
+        5
       ],
       "allTests": [
         {
@@ -342,7 +342,7 @@
       "id": "29e4f66f-6761-4e42-ad8e-4a27e247024f",
       "name": "Flight Create arrivalTime to short",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/create",
-      "time": 4,
+      "time": 7,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -362,7 +362,7 @@
         }
       },
       "times": [
-        4
+        7
       ],
       "allTests": [
         {
@@ -408,7 +408,7 @@
       "id": "048e318b-371f-49af-8d5d-3948ed17a52c",
       "name": "Flight Create departureTime to long",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/create",
-      "time": 6,
+      "time": 8,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -428,7 +428,7 @@
         }
       },
       "times": [
-        6
+        8
       ],
       "allTests": [
         {
@@ -440,6 +440,39 @@
     {
       "id": "b0b4710f-32ca-405d-aaf8-2682c16418b3",
       "name": "Flight Create departureTime to short",
+      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/create",
+      "time": 7,
+      "responseCode": {
+        "code": 400,
+        "name": "Bad Request"
+      },
+      "tests": {
+        "status is 400": true,
+        "response is error": true
+      },
+      "testPassFailCounts": {
+        "status is 400": {
+          "pass": 1,
+          "fail": 0
+        },
+        "response is error": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        7
+      ],
+      "allTests": [
+        {
+          "status is 400": true,
+          "response is error": true
+        }
+      ]
+    },
+    {
+      "id": "7313d8a4-477e-4acb-b1ab-2367d8e75c0c",
+      "name": "Flight Create departureTime empty",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/create",
       "time": 4,
       "responseCode": {
@@ -471,43 +504,10 @@
       ]
     },
     {
-      "id": "7313d8a4-477e-4acb-b1ab-2367d8e75c0c",
-      "name": "Flight Create departureTime empty",
-      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/create",
-      "time": 8,
-      "responseCode": {
-        "code": 400,
-        "name": "Bad Request"
-      },
-      "tests": {
-        "status is 400": true,
-        "response is error": true
-      },
-      "testPassFailCounts": {
-        "status is 400": {
-          "pass": 1,
-          "fail": 0
-        },
-        "response is error": {
-          "pass": 1,
-          "fail": 0
-        }
-      },
-      "times": [
-        8
-      ],
-      "allTests": [
-        {
-          "status is 400": true,
-          "response is error": true
-        }
-      ]
-    },
-    {
       "id": "6fce0fc9-7253-492b-bb6f-3ca787fe2ad9",
       "name": "Flight Update",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/update",
-      "time": 8,
+      "time": 9,
       "responseCode": {
         "code": 200,
         "name": "OK"
@@ -527,7 +527,7 @@
         }
       },
       "times": [
-        8
+        9
       ],
       "allTests": [
         {
@@ -639,7 +639,7 @@
       "id": "d72e7541-44d2-4de9-b235-149c660f1c7f",
       "name": "Flight Update arrivalTime to long",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/update",
-      "time": 3,
+      "time": 4,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -659,7 +659,7 @@
         }
       },
       "times": [
-        3
+        4
       ],
       "allTests": [
         {
@@ -672,7 +672,7 @@
       "id": "0e7cca20-7d7f-4375-947f-7af0edd68714",
       "name": "Flight Update arrivalTime to short",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/update",
-      "time": 9,
+      "time": 5,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -692,7 +692,7 @@
         }
       },
       "times": [
-        9
+        5
       ],
       "allTests": [
         {
@@ -705,7 +705,7 @@
       "id": "ac818831-ae45-4f8c-b7cb-bcb48e116903",
       "name": "Flight Update arrivalTime empty",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/update",
-      "time": 6,
+      "time": 5,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -725,7 +725,7 @@
         }
       },
       "times": [
-        6
+        5
       ],
       "allTests": [
         {
@@ -738,7 +738,7 @@
       "id": "36f812e8-987a-4da0-8ea1-be360fdf5a30",
       "name": "Flight Update departureTime to long",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/update",
-      "time": 5,
+      "time": 4,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -758,7 +758,7 @@
         }
       },
       "times": [
-        5
+        4
       ],
       "allTests": [
         {
@@ -771,39 +771,6 @@
       "id": "f2b3598d-678c-4588-b54b-b88815c79d2d",
       "name": "Flight Update departureTime to short",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/update",
-      "time": 9,
-      "responseCode": {
-        "code": 400,
-        "name": "Bad Request"
-      },
-      "tests": {
-        "status is 400": true,
-        "response is error": true
-      },
-      "testPassFailCounts": {
-        "status is 400": {
-          "pass": 1,
-          "fail": 0
-        },
-        "response is error": {
-          "pass": 1,
-          "fail": 0
-        }
-      },
-      "times": [
-        9
-      ],
-      "allTests": [
-        {
-          "status is 400": true,
-          "response is error": true
-        }
-      ]
-    },
-    {
-      "id": "de752518-9625-44a9-b9b9-ea3b94910fbf",
-      "name": "Flight Update departureTime empty",
-      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/update",
       "time": 5,
       "responseCode": {
         "code": 400,
@@ -834,10 +801,43 @@
       ]
     },
     {
+      "id": "de752518-9625-44a9-b9b9-ea3b94910fbf",
+      "name": "Flight Update departureTime empty",
+      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/update",
+      "time": 4,
+      "responseCode": {
+        "code": 400,
+        "name": "Bad Request"
+      },
+      "tests": {
+        "status is 400": true,
+        "response is error": true
+      },
+      "testPassFailCounts": {
+        "status is 400": {
+          "pass": 1,
+          "fail": 0
+        },
+        "response is error": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        4
+      ],
+      "allTests": [
+        {
+          "status is 400": true,
+          "response is error": true
+        }
+      ]
+    },
+    {
       "id": "d5b0fc6a-8aa1-40f3-8306-2fcce24c3835",
       "name": "Flight Delete",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/delete?uuid=6be44044-1282-41c4-9a00-0c3b83c2d7b0",
-      "time": 5,
+      "time": 9,
       "responseCode": {
         "code": 200,
         "name": "OK"
@@ -857,7 +857,7 @@
         }
       },
       "times": [
-        5
+        9
       ],
       "allTests": [
         {
@@ -870,7 +870,7 @@
       "id": "93ab53ea-a753-4a26-90aa-636cc50c1d31",
       "name": "Flight Delete nonexistent",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/delete?uuid=6be44043-1282-41c4-9a00-0c3b83c2d7b0",
-      "time": 3,
+      "time": 5,
       "responseCode": {
         "code": 404,
         "name": "Not Found"
@@ -890,7 +890,7 @@
         }
       },
       "times": [
-        3
+        5
       ],
       "allTests": [
         {
@@ -903,7 +903,7 @@
       "id": "8e2aa40d-c2e4-465a-a5bc-c886fa04b537",
       "name": "Flight Delete UUID invalid",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/delete?uuid=6be44044-1282-41c4-9a00-0c3b83c2d7g9",
-      "time": 3,
+      "time": 5,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -923,7 +923,7 @@
         }
       },
       "times": [
-        3
+        5
       ],
       "allTests": [
         {
@@ -936,7 +936,7 @@
       "id": "58389bf0-a9f1-4b54-8664-bc77a457fe03",
       "name": "Flight Delete  UUID empty",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/delete?uuid=",
-      "time": 7,
+      "time": 4,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -956,7 +956,7 @@
         }
       },
       "times": [
-        7
+        4
       ],
       "allTests": [
         {
@@ -969,7 +969,7 @@
       "id": "9241fadc-c6db-494b-baed-c61753b6b349",
       "name": "Airplane List",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/list",
-      "time": 5,
+      "time": 15,
       "responseCode": {
         "code": 200,
         "name": "OK"
@@ -989,7 +989,7 @@
         }
       },
       "times": [
-        5
+        15
       ],
       "allTests": [
         {
@@ -1035,7 +1035,7 @@
       "id": "b7c2c2d8-0fb8-4ead-8bc5-76c806ffa1ee",
       "name": "Airplane List sorted invalid QueryParam",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/list?sort=fehler",
-      "time": 4,
+      "time": 5,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -1055,7 +1055,7 @@
         }
       },
       "times": [
-        4
+        5
       ],
       "allTests": [
         {
@@ -1068,7 +1068,7 @@
       "id": "3ad76e6c-29e6-480d-a251-8b858778a36b",
       "name": "Airplane Get by UUID",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/get?uuid=08d9b8e2-a182-40fa-97f8-2ae0402b939f",
-      "time": 6,
+      "time": 7,
       "responseCode": {
         "code": 200,
         "name": "OK"
@@ -1088,7 +1088,7 @@
         }
       },
       "times": [
-        6
+        7
       ],
       "allTests": [
         {
@@ -1101,7 +1101,7 @@
       "id": "6a8e266b-b4c1-4f0f-94b0-965437aecb66",
       "name": "Airplane Get by UUID nonexistent",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/get?uuid=08d9b8e1-a182-40fa-97f8-2ae0402b939f",
-      "time": 4,
+      "time": 5,
       "responseCode": {
         "code": 404,
         "name": "Not Found"
@@ -1121,7 +1121,7 @@
         }
       },
       "times": [
-        4
+        5
       ],
       "allTests": [
         {
@@ -1167,7 +1167,7 @@
       "id": "1fa197eb-b7df-4bc9-b804-0bdab8bf8c11",
       "name": "Airplane Get by UUID empty",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/get?uuid=",
-      "time": 5,
+      "time": 3,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -1187,7 +1187,7 @@
         }
       },
       "times": [
-        5
+        3
       ],
       "allTests": [
         {
@@ -1200,7 +1200,7 @@
       "id": "afc2f381-d2e4-4d3a-88bc-e0f1ab2ea791",
       "name": "Airplane Create",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/create",
-      "time": 9,
+      "time": 7,
       "responseCode": {
         "code": 200,
         "name": "OK"
@@ -1220,7 +1220,7 @@
         }
       },
       "times": [
-        9
+        7
       ],
       "allTests": [
         {
@@ -1266,7 +1266,7 @@
       "id": "c2124901-9981-4197-9abe-bd546d3971b7",
       "name": "Airplane Create airline to long",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/create",
-      "time": 4,
+      "time": 9,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -1286,7 +1286,7 @@
         }
       },
       "times": [
-        4
+        9
       ],
       "allTests": [
         {
@@ -1332,39 +1332,6 @@
       "id": "b9452219-25dd-4da6-bea5-886246bb31af",
       "name": "Airplane Create airline empty",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/create",
-      "time": 5,
-      "responseCode": {
-        "code": 400,
-        "name": "Bad Request"
-      },
-      "tests": {
-        "status is 400": true,
-        "response is error": true
-      },
-      "testPassFailCounts": {
-        "status is 400": {
-          "pass": 1,
-          "fail": 0
-        },
-        "response is error": {
-          "pass": 1,
-          "fail": 0
-        }
-      },
-      "times": [
-        5
-      ],
-      "allTests": [
-        {
-          "status is 400": true,
-          "response is error": true
-        }
-      ]
-    },
-    {
-      "id": "9d086ccb-8bbd-4edc-9f07-14ffc3996fd3",
-      "name": "Airplane Create modelName to long",
-      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/create",
       "time": 4,
       "responseCode": {
         "code": 400,
@@ -1395,10 +1362,10 @@
       ]
     },
     {
-      "id": "5c94878e-b5e0-4a9d-b302-004e2886bb2e",
-      "name": "Airplane Create modelName to short",
+      "id": "9d086ccb-8bbd-4edc-9f07-14ffc3996fd3",
+      "name": "Airplane Create modelName to long",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/create",
-      "time": 6,
+      "time": 7,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -1418,7 +1385,40 @@
         }
       },
       "times": [
-        6
+        7
+      ],
+      "allTests": [
+        {
+          "status is 400": true,
+          "response is error": true
+        }
+      ]
+    },
+    {
+      "id": "5c94878e-b5e0-4a9d-b302-004e2886bb2e",
+      "name": "Airplane Create modelName to short",
+      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/create",
+      "time": 4,
+      "responseCode": {
+        "code": 400,
+        "name": "Bad Request"
+      },
+      "tests": {
+        "status is 400": true,
+        "response is error": true
+      },
+      "testPassFailCounts": {
+        "status is 400": {
+          "pass": 1,
+          "fail": 0
+        },
+        "response is error": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        4
       ],
       "allTests": [
         {
@@ -1497,39 +1497,6 @@
       "id": "696981ce-6663-47f6-aa0b-ed57ab0e17c2",
       "name": "Airplane Create flightNumber to short",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/create",
-      "time": 4,
-      "responseCode": {
-        "code": 400,
-        "name": "Bad Request"
-      },
-      "tests": {
-        "status is 400": true,
-        "response is error": true
-      },
-      "testPassFailCounts": {
-        "status is 400": {
-          "pass": 1,
-          "fail": 0
-        },
-        "response is error": {
-          "pass": 1,
-          "fail": 0
-        }
-      },
-      "times": [
-        4
-      ],
-      "allTests": [
-        {
-          "status is 400": true,
-          "response is error": true
-        }
-      ]
-    },
-    {
-      "id": "e5278356-4dcf-40cb-9edc-f2458710e42f",
-      "name": "Airplane Create flightNumber empty",
-      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/create",
       "time": 5,
       "responseCode": {
         "code": 400,
@@ -1560,10 +1527,43 @@
       ]
     },
     {
+      "id": "e5278356-4dcf-40cb-9edc-f2458710e42f",
+      "name": "Airplane Create flightNumber empty",
+      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/create",
+      "time": 4,
+      "responseCode": {
+        "code": 400,
+        "name": "Bad Request"
+      },
+      "tests": {
+        "status is 400": true,
+        "response is error": true
+      },
+      "testPassFailCounts": {
+        "status is 400": {
+          "pass": 1,
+          "fail": 0
+        },
+        "response is error": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        4
+      ],
+      "allTests": [
+        {
+          "status is 400": true,
+          "response is error": true
+        }
+      ]
+    },
+    {
       "id": "edefeb49-66b8-4667-8820-e488018f1cd5",
       "name": "Airplane Update",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/update",
-      "time": 5,
+      "time": 6,
       "responseCode": {
         "code": 200,
         "name": "OK"
@@ -1583,7 +1583,7 @@
         }
       },
       "times": [
-        5
+        6
       ],
       "allTests": [
         {
@@ -1596,7 +1596,7 @@
       "id": "1bb33ce8-bb77-477f-b405-9a57d4b38e41",
       "name": "Airplane Update nonexistent",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/update",
-      "time": 5,
+      "time": 4,
       "responseCode": {
         "code": 404,
         "name": "Not Found"
@@ -1616,7 +1616,7 @@
         }
       },
       "times": [
-        5
+        4
       ],
       "allTests": [
         {
@@ -1629,7 +1629,7 @@
       "id": "d2afcbdd-4b41-4fd2-b498-aee27455dfd7",
       "name": "Airplane Update airplaneUUID invalid",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/update",
-      "time": 3,
+      "time": 5,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -1649,7 +1649,7 @@
         }
       },
       "times": [
-        3
+        5
       ],
       "allTests": [
         {
@@ -1662,7 +1662,7 @@
       "id": "f669853b-b060-4e3b-bf2c-b25bd107827d",
       "name": "Airplane Update airplaneUUID empty",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/update",
-      "time": 4,
+      "time": 5,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -1682,7 +1682,7 @@
         }
       },
       "times": [
-        4
+        5
       ],
       "allTests": [
         {
@@ -1728,6 +1728,39 @@
       "id": "2f83bfcf-b176-4798-93ea-6f025f910b06",
       "name": "Airplane Update airline to short",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/update",
+      "time": 7,
+      "responseCode": {
+        "code": 400,
+        "name": "Bad Request"
+      },
+      "tests": {
+        "status is 400": true,
+        "response is error": true
+      },
+      "testPassFailCounts": {
+        "status is 400": {
+          "pass": 1,
+          "fail": 0
+        },
+        "response is error": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        7
+      ],
+      "allTests": [
+        {
+          "status is 400": true,
+          "response is error": true
+        }
+      ]
+    },
+    {
+      "id": "b05ce597-eb18-4163-8a08-e9c7037575bd",
+      "name": "Airplane Update airline empty",
+      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/update",
       "time": 4,
       "responseCode": {
         "code": 400,
@@ -1749,39 +1782,6 @@
       },
       "times": [
         4
-      ],
-      "allTests": [
-        {
-          "status is 400": true,
-          "response is error": true
-        }
-      ]
-    },
-    {
-      "id": "b05ce597-eb18-4163-8a08-e9c7037575bd",
-      "name": "Airplane Update airline empty",
-      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/update",
-      "time": 8,
-      "responseCode": {
-        "code": 400,
-        "name": "Bad Request"
-      },
-      "tests": {
-        "status is 400": true,
-        "response is error": true
-      },
-      "testPassFailCounts": {
-        "status is 400": {
-          "pass": 1,
-          "fail": 0
-        },
-        "response is error": {
-          "pass": 1,
-          "fail": 0
-        }
-      },
-      "times": [
-        8
       ],
       "allTests": [
         {
@@ -1827,7 +1827,7 @@
       "id": "7d414135-56ba-47b4-a192-f99e7d8303a1",
       "name": "Airplane Update modelName to short",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/update",
-      "time": 4,
+      "time": 5,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -1847,7 +1847,7 @@
         }
       },
       "times": [
-        4
+        5
       ],
       "allTests": [
         {
@@ -1926,39 +1926,6 @@
       "id": "633e889b-8631-4c66-8d47-9baadcc5101e",
       "name": "Airplane Update flightNumber to short",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/update",
-      "time": 8,
-      "responseCode": {
-        "code": 400,
-        "name": "Bad Request"
-      },
-      "tests": {
-        "status is 400": true,
-        "response is error": true
-      },
-      "testPassFailCounts": {
-        "status is 400": {
-          "pass": 1,
-          "fail": 0
-        },
-        "response is error": {
-          "pass": 1,
-          "fail": 0
-        }
-      },
-      "times": [
-        8
-      ],
-      "allTests": [
-        {
-          "status is 400": true,
-          "response is error": true
-        }
-      ]
-    },
-    {
-      "id": "c54ad478-348e-4928-acfb-61abd3ce45e5",
-      "name": "Airplane Update flightNumber empty",
-      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/update",
       "time": 4,
       "responseCode": {
         "code": 400,
@@ -1989,10 +1956,43 @@
       ]
     },
     {
+      "id": "c54ad478-348e-4928-acfb-61abd3ce45e5",
+      "name": "Airplane Update flightNumber empty",
+      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/update",
+      "time": 5,
+      "responseCode": {
+        "code": 400,
+        "name": "Bad Request"
+      },
+      "tests": {
+        "status is 400": true,
+        "response is error": true
+      },
+      "testPassFailCounts": {
+        "status is 400": {
+          "pass": 1,
+          "fail": 0
+        },
+        "response is error": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        5
+      ],
+      "allTests": [
+        {
+          "status is 400": true,
+          "response is error": true
+        }
+      ]
+    },
+    {
       "id": "5d372d61-6225-44f0-ba8e-ceae8cd05690",
       "name": "Airplane Delete",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/delete?uuid=781fd1a1-49af-42cb-b862-1bf27355be99",
-      "time": 4,
+      "time": 5,
       "responseCode": {
         "code": 200,
         "name": "OK"
@@ -2012,7 +2012,7 @@
         }
       },
       "times": [
-        4
+        5
       ],
       "allTests": [
         {
@@ -2025,7 +2025,7 @@
       "id": "383004a3-b9c0-4c6b-8d98-c9f08d07ae9b",
       "name": "Airplane Delete nonexistent",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/delete?uuid=781fd1a1-49af-42cb-b862-1bf27355be99",
-      "time": 3,
+      "time": 4,
       "responseCode": {
         "code": 404,
         "name": "Not Found"
@@ -2045,7 +2045,7 @@
         }
       },
       "times": [
-        3
+        4
       ],
       "allTests": [
         {
@@ -2058,7 +2058,7 @@
       "id": "3a51c12e-83c1-4f30-8c44-a9f9698c80be",
       "name": "Airplane Delete UUID invalid",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/delete?uuid=781fd1-49af-42cb-b862-1bf27355be",
-      "time": 3,
+      "time": 4,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -2078,7 +2078,7 @@
         }
       },
       "times": [
-        3
+        4
       ],
       "allTests": [
         {
@@ -2091,7 +2091,7 @@
       "id": "6641d43c-0bc2-46d2-a418-00fd33766ad9",
       "name": "Airplane Delete UUID empty",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/delete?uuid=",
-      "time": 7,
+      "time": 4,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -2111,7 +2111,7 @@
         }
       },
       "times": [
-        7
+        4
       ],
       "allTests": [
         {
@@ -2124,7 +2124,7 @@
       "id": "60ad639f-b439-4ba4-aeca-65a17ed08a9a",
       "name": "Airport List",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/list",
-      "time": 7,
+      "time": 8,
       "responseCode": {
         "code": 200,
         "name": "OK"
@@ -2144,7 +2144,7 @@
         }
       },
       "times": [
-        7
+        8
       ],
       "allTests": [
         {
@@ -2190,7 +2190,7 @@
       "id": "216ea86f-8bf6-4a10-ad1a-1bb5882613d6",
       "name": "Airport List sorted invalid QueryParam",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/list?sort=fehler",
-      "time": 3,
+      "time": 6,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -2210,7 +2210,7 @@
         }
       },
       "times": [
-        3
+        6
       ],
       "allTests": [
         {
@@ -2223,7 +2223,7 @@
       "id": "2ce80bbf-d43c-4e80-ae10-bceda58cccb9",
       "name": "Airport Get by UUID",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/get?uuid=01967a4e-a766-4b31-a280-1370d3c45327",
-      "time": 4,
+      "time": 6,
       "responseCode": {
         "code": 200,
         "name": "OK"
@@ -2243,7 +2243,7 @@
         }
       },
       "times": [
-        4
+        6
       ],
       "allTests": [
         {
@@ -2256,7 +2256,7 @@
       "id": "904c2442-0eff-4b2e-8bc0-8357c2244765",
       "name": "Airport Get by UUID nonexistent",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/get?uuid=02967a4e-a766-4b31-a280-1370d3c45327",
-      "time": 3,
+      "time": 4,
       "responseCode": {
         "code": 404,
         "name": "Not Found"
@@ -2276,7 +2276,7 @@
         }
       },
       "times": [
-        3
+        4
       ],
       "allTests": [
         {
@@ -2289,105 +2289,6 @@
       "id": "0e972f25-659e-40be-a876-a42e4831d0f7",
       "name": "Airport Get by UUID invalid",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/get?uuid=123",
-      "time": 5,
-      "responseCode": {
-        "code": 400,
-        "name": "Bad Request"
-      },
-      "tests": {
-        "status is 400": true,
-        "response is error": true
-      },
-      "testPassFailCounts": {
-        "status is 400": {
-          "pass": 1,
-          "fail": 0
-        },
-        "response is error": {
-          "pass": 1,
-          "fail": 0
-        }
-      },
-      "times": [
-        5
-      ],
-      "allTests": [
-        {
-          "status is 400": true,
-          "response is error": true
-        }
-      ]
-    },
-    {
-      "id": "3a919e9c-e338-44e1-9daf-783102585f42",
-      "name": "Airport Get by UUID empty",
-      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/get?uuid=",
-      "time": 5,
-      "responseCode": {
-        "code": 400,
-        "name": "Bad Request"
-      },
-      "tests": {
-        "status is 400": true,
-        "response is error": true
-      },
-      "testPassFailCounts": {
-        "status is 400": {
-          "pass": 1,
-          "fail": 0
-        },
-        "response is error": {
-          "pass": 1,
-          "fail": 0
-        }
-      },
-      "times": [
-        5
-      ],
-      "allTests": [
-        {
-          "status is 400": true,
-          "response is error": true
-        }
-      ]
-    },
-    {
-      "id": "201b3255-7335-4d5a-b851-7b3d728bf059",
-      "name": "Airport Create",
-      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/create",
-      "time": 5,
-      "responseCode": {
-        "code": 200,
-        "name": "OK"
-      },
-      "tests": {
-        "status is 200": true,
-        "response body is correct": true
-      },
-      "testPassFailCounts": {
-        "status is 200": {
-          "pass": 1,
-          "fail": 0
-        },
-        "response body is correct": {
-          "pass": 1,
-          "fail": 0
-        }
-      },
-      "times": [
-        5
-      ],
-      "allTests": [
-        {
-          "status is 200": true,
-          "response body is correct": true
-        }
-      ]
-    },
-    {
-      "id": "9d471731-3fc8-4f27-be84-bbf85837d2d0",
-      "name": "Airport Create airportUUID invalid RegEx",
-      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/create",
       "time": 4,
       "responseCode": {
         "code": 400,
@@ -2418,10 +2319,10 @@
       ]
     },
     {
-      "id": "422d590e-8568-4cb1-8c09-4d002312fa77",
-      "name": "Airport Create location to long",
-      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/create",
-      "time": 5,
+      "id": "3a919e9c-e338-44e1-9daf-783102585f42",
+      "name": "Airport Get by UUID empty",
+      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/get?uuid=",
+      "time": 3,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -2441,7 +2342,106 @@
         }
       },
       "times": [
-        5
+        3
+      ],
+      "allTests": [
+        {
+          "status is 400": true,
+          "response is error": true
+        }
+      ]
+    },
+    {
+      "id": "201b3255-7335-4d5a-b851-7b3d728bf059",
+      "name": "Airport Create",
+      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/create",
+      "time": 7,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "status is 200": true,
+        "response body is correct": true
+      },
+      "testPassFailCounts": {
+        "status is 200": {
+          "pass": 1,
+          "fail": 0
+        },
+        "response body is correct": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        7
+      ],
+      "allTests": [
+        {
+          "status is 200": true,
+          "response body is correct": true
+        }
+      ]
+    },
+    {
+      "id": "9d471731-3fc8-4f27-be84-bbf85837d2d0",
+      "name": "Airport Create airportUUID invalid RegEx",
+      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/create",
+      "time": 3,
+      "responseCode": {
+        "code": 400,
+        "name": "Bad Request"
+      },
+      "tests": {
+        "status is 400": true,
+        "response is error": true
+      },
+      "testPassFailCounts": {
+        "status is 400": {
+          "pass": 1,
+          "fail": 0
+        },
+        "response is error": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        3
+      ],
+      "allTests": [
+        {
+          "status is 400": true,
+          "response is error": true
+        }
+      ]
+    },
+    {
+      "id": "422d590e-8568-4cb1-8c09-4d002312fa77",
+      "name": "Airport Create location to long",
+      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/create",
+      "time": 4,
+      "responseCode": {
+        "code": 400,
+        "name": "Bad Request"
+      },
+      "tests": {
+        "status is 400": true,
+        "response is error": true
+      },
+      "testPassFailCounts": {
+        "status is 400": {
+          "pass": 1,
+          "fail": 0
+        },
+        "response is error": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        4
       ],
       "allTests": [
         {
@@ -2487,7 +2487,7 @@
       "id": "4907b166-9586-409c-a56a-0f66dde3f6cc",
       "name": "Airport Create location empty",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/create",
-      "time": 4,
+      "time": 5,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -2507,7 +2507,7 @@
         }
       },
       "times": [
-        4
+        5
       ],
       "allTests": [
         {
@@ -2520,7 +2520,7 @@
       "id": "f125aa65-a667-4c75-baf2-a0d704749d28",
       "name": "Airport Update",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/update",
-      "time": 6,
+      "time": 5,
       "responseCode": {
         "code": 200,
         "name": "OK"
@@ -2540,7 +2540,7 @@
         }
       },
       "times": [
-        6
+        5
       ],
       "allTests": [
         {
@@ -2619,6 +2619,72 @@
       "id": "4263e577-42b2-4439-b607-3ad682962e58",
       "name": "Airport Update airportUUID empty",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/update",
+      "time": 5,
+      "responseCode": {
+        "code": 400,
+        "name": "Bad Request"
+      },
+      "tests": {
+        "status is 400": true,
+        "response is error": true
+      },
+      "testPassFailCounts": {
+        "status is 400": {
+          "pass": 1,
+          "fail": 0
+        },
+        "response is error": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        5
+      ],
+      "allTests": [
+        {
+          "status is 400": true,
+          "response is error": true
+        }
+      ]
+    },
+    {
+      "id": "8b6aeb9c-dbaa-47f6-b0be-3b0d504cef51",
+      "name": "Airport Update location to long",
+      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/update",
+      "time": 5,
+      "responseCode": {
+        "code": 400,
+        "name": "Bad Request"
+      },
+      "tests": {
+        "status is 400": true,
+        "response is error": true
+      },
+      "testPassFailCounts": {
+        "status is 400": {
+          "pass": 1,
+          "fail": 0
+        },
+        "response is error": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        5
+      ],
+      "allTests": [
+        {
+          "status is 400": true,
+          "response is error": true
+        }
+      ]
+    },
+    {
+      "id": "f4a4acde-69f6-49d8-91a8-e87061f5ab8b",
+      "name": "Airport Update location to short",
+      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/update",
       "time": 6,
       "responseCode": {
         "code": 400,
@@ -2649,76 +2715,10 @@
       ]
     },
     {
-      "id": "8b6aeb9c-dbaa-47f6-b0be-3b0d504cef51",
-      "name": "Airport Update location to long",
-      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/update",
-      "time": 4,
-      "responseCode": {
-        "code": 400,
-        "name": "Bad Request"
-      },
-      "tests": {
-        "status is 400": true,
-        "response is error": true
-      },
-      "testPassFailCounts": {
-        "status is 400": {
-          "pass": 1,
-          "fail": 0
-        },
-        "response is error": {
-          "pass": 1,
-          "fail": 0
-        }
-      },
-      "times": [
-        4
-      ],
-      "allTests": [
-        {
-          "status is 400": true,
-          "response is error": true
-        }
-      ]
-    },
-    {
-      "id": "f4a4acde-69f6-49d8-91a8-e87061f5ab8b",
-      "name": "Airport Update location to short",
-      "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/update",
-      "time": 4,
-      "responseCode": {
-        "code": 400,
-        "name": "Bad Request"
-      },
-      "tests": {
-        "status is 400": true,
-        "response is error": true
-      },
-      "testPassFailCounts": {
-        "status is 400": {
-          "pass": 1,
-          "fail": 0
-        },
-        "response is error": {
-          "pass": 1,
-          "fail": 0
-        }
-      },
-      "times": [
-        4
-      ],
-      "allTests": [
-        {
-          "status is 400": true,
-          "response is error": true
-        }
-      ]
-    },
-    {
       "id": "d779784e-d83f-4899-a389-fc621073f0fe",
       "name": "Airport Update location empty",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/update",
-      "time": 4,
+      "time": 5,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -2738,7 +2738,7 @@
         }
       },
       "times": [
-        4
+        5
       ],
       "allTests": [
         {
@@ -2751,7 +2751,7 @@
       "id": "81f92d83-401e-48d3-a443-54ba7ad408ab",
       "name": "Airport Delete",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/delete?uuid=568429ce-b518-48eb-9628-4fd1ad662468",
-      "time": 7,
+      "time": 5,
       "responseCode": {
         "code": 200,
         "name": "OK"
@@ -2771,7 +2771,7 @@
         }
       },
       "times": [
-        7
+        5
       ],
       "allTests": [
         {
@@ -2784,7 +2784,7 @@
       "id": "2f316710-ad73-4729-b730-3d252210697d",
       "name": "Airport Delete nonexistent",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/delete?uuid=568428ce-b518-48eb-9628-4fd1ad662468",
-      "time": 4,
+      "time": 3,
       "responseCode": {
         "code": 404,
         "name": "Not Found"
@@ -2804,7 +2804,7 @@
         }
       },
       "times": [
-        4
+        3
       ],
       "allTests": [
         {
@@ -2817,7 +2817,7 @@
       "id": "e79b2bd9-9420-4f79-8049-b1ce11ccbfc3",
       "name": "Airport Delete UUID invalid",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/delete?uuid=56842ce-b518-48eb-9628-4fd1ad662468",
-      "time": 4,
+      "time": 3,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -2837,7 +2837,7 @@
         }
       },
       "times": [
-        4
+        3
       ],
       "allTests": [
         {
@@ -2850,7 +2850,7 @@
       "id": "bf986001-0c23-4d5d-846d-777868b683a0",
       "name": "Airport Delete UUID empty",
       "url": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/delete?uuid=",
-      "time": 4,
+      "time": 9,
       "responseCode": {
         "code": 400,
         "name": "Bad Request"
@@ -2870,7 +2870,7 @@
         }
       },
       "times": [
-        4
+        9
       ],
       "allTests": [
         {
@@ -2881,7 +2881,7 @@
     }
   ],
   "count": 1,
-  "totalTime": 422,
+  "totalTime": 513,
   "collection": {
     "requests": [
       {
