@@ -27,13 +27,13 @@ public class AirportService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response GetAllAirports(@QueryParam("sort") String sort) {
-        List<Airport> flugahafens = DataHandler.readAllAirport();
+    public Response getAllAirports(@QueryParam("sort") String sort) {
+        List<Airport> airports = DataHandler.readAllAirport();
         int status = 200;
 
         if (sort != null) {
             if (sort.equals("airportUUID") || sort.equals("location")) {
-                flugahafens.sort((f1, f2) -> {
+                airports.sort((f1, f2) -> {
                     switch (sort) {
                         case "airportUUID":
                             return f1.getAirportUUID().compareTo(f2.getAirportUUID());
@@ -53,7 +53,7 @@ public class AirportService {
                 .status(status)
                 .entity(status == 400 ? new HashMap<String, String>() {{
                     put("MESSAGE", "Parameter Error: " + sort + " Not Valid Parameter");
-                }} : flugahafens)
+                }} : airports)
                 .build();
     }
 
@@ -66,7 +66,11 @@ public class AirportService {
     @GET
     @Path("get")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response GetOneAirport(@QueryParam("uuid") String uuid) {
+    public Response getOneAirport(
+            @QueryParam("uuid")
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}") String uuid
+    ) {
         Airport airport = DataHandler.readAirportByUUID(uuid);
         int status = 200;
 
@@ -89,7 +93,7 @@ public class AirportService {
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response deleteAirport(
+    public Response deleteOneAirport(
             @QueryParam("uuid")
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
@@ -113,7 +117,7 @@ public class AirportService {
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response addAirport(
+    public Response addOneAirport(
             @Valid @BeanParam Airport airport
     ) {
 
@@ -129,13 +133,13 @@ public class AirportService {
     /**
      * updates a new airport
      *
-     * @param airport aiport
+     * @param airport airport
      * @return Response
      */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response updateAirport(
+    public Response updateOneAirport(
             @Valid @BeanParam Airport airport
     ) {
         int status = 200;

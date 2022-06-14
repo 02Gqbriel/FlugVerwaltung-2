@@ -51,7 +51,7 @@ public class DataHandler {
     /**
      * inserts a new flight into the flightList
      *
-     * @param flight the flug to be saved
+     * @param flight the flight to be saved
      */
     public static void insertFlight(Flight flight) {
         getFlightList().add(flight);
@@ -72,9 +72,9 @@ public class DataHandler {
      * @return success=true/false
      */
     public static boolean deleteFlight(String flightUUID) {
-        Flight flug = readFlightByUUID(flightUUID);
-        if (flug != null) {
-            getFlightList().remove(flug);
+        Flight flight = readFlightByUUID(flightUUID);
+        if (flight != null) {
+            getFlightList().remove(flight);
             writeFlightJSON();
             return true;
         } else {
@@ -144,7 +144,7 @@ public class DataHandler {
     /**
      * reads all Airport
      *
-     * @return list of flughafen
+     * @return list of airport
      */
     public static List<Airport> readAllAirport() {
         return getAirportList();
@@ -228,9 +228,9 @@ public class DataHandler {
         FileOutputStream fileOutputStream = null;
         Writer fileWriter;
 
-        String flugPath = Config.getProperty("flightJSON");
+        String flightPath = Config.getProperty("flightJSON");
         try {
-            fileOutputStream = new FileOutputStream(flugPath);
+            fileOutputStream = new FileOutputStream(flightPath);
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
             objectWriter.writeValue(fileWriter, getFlightList());
         } catch (IOException ex) {
@@ -239,7 +239,7 @@ public class DataHandler {
     }
 
     /**
-     * reads the flugzeugs from the JSON-file
+     * reads the airplanes from the JSON-file
      */
     private static void readAirplaneJSON() {
         try {
@@ -267,9 +267,9 @@ public class DataHandler {
         FileOutputStream fileOutputStream = null;
         Writer fileWriter;
 
-        String flugzeugPath = Config.getProperty("airplaneJSON");
+        String airplanePath = Config.getProperty("airplaneJSON");
         try {
-            fileOutputStream = new FileOutputStream(flugzeugPath);
+            fileOutputStream = new FileOutputStream(airplanePath);
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
             objectWriter.writeValue(fileWriter, getAirplaneList());
         } catch (IOException ex) {
@@ -279,7 +279,7 @@ public class DataHandler {
 
 
     /**
-     * reads the flughafen from the JSON-file
+     * reads the airport from the JSON-file
      */
     private static void readAirportJSON() {
         try {
@@ -307,9 +307,9 @@ public class DataHandler {
         FileOutputStream fileOutputStream = null;
         Writer fileWriter;
 
-        String flughafenPath = Config.getProperty("airportJSON");
+        String airportPath = Config.getProperty("airportJSON");
         try {
-            fileOutputStream = new FileOutputStream(flughafenPath);
+            fileOutputStream = new FileOutputStream(airportPath);
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
             objectWriter.writeValue(fileWriter, getAirportList());
         } catch (IOException ex) {

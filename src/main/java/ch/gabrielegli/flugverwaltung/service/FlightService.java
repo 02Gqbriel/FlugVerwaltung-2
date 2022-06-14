@@ -28,13 +28,13 @@ public class FlightService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response GetAllPlanes(@QueryParam("sort") String sort) {
-        List<Flight> fluege = DataHandler.readAllFlights();
+    public Response getAllFlights(@QueryParam("sort") String sort) {
+        List<Flight> flights = DataHandler.readAllFlights();
         int status = 200;
 
         if (sort != null) {
             if (sort.equals("flightUUID") || sort.equals("arrivalTime") || sort.equals("departureTime")) {
-                fluege.sort((f1, f2) -> {
+                flights.sort((f1, f2) -> {
                     switch (sort) {
                         case "flightUUID":
                             return f1.getFlightUUID().compareTo(f2.getFlightUUID());
@@ -56,7 +56,7 @@ public class FlightService {
                 .status(status)
                 .entity(status == 400 ? new HashMap<String, String>() {{
                     put("MESSAGE", "Parameter Error: " + sort + " Not Valid Parameter");
-                }} : fluege)
+                }} : flights)
                 .build();
     }
 
@@ -69,7 +69,11 @@ public class FlightService {
     @GET
     @Path("get")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response GetOneAirport(@QueryParam("uuid") String uuid) {
+    public Response getOneFlight(
+            @QueryParam("uuid")
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}") String uuid
+    ) {
         Flight flight = DataHandler.readFlightByUUID(uuid);
         int status = 200;
 
@@ -92,10 +96,11 @@ public class FlightService {
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response DeleteOneFlight(@QueryParam("uuid")
-                                    @NotEmpty
-                                    @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                            String uuid) {
+    public Response deleteOneFlight(
+            @QueryParam("uuid")
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}") String uuid
+    ) {
         int status = 200;
 
         if (!DataHandler.deleteFlight(uuid)) {
@@ -114,7 +119,7 @@ public class FlightService {
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response AddOneFlight(
+    public Response addOneFlight(
             @BeanParam @Valid Flight flight
     ) {
         if (flight.getFlightUUID() == null) {
@@ -135,7 +140,7 @@ public class FlightService {
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response UpdateOneFlight(
+    public Response updateOneFlight(
             @BeanParam @Valid Flight flight
     ) {
         int status = 200;

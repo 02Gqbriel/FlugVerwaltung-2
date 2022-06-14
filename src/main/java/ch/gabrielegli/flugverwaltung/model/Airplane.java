@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 import javax.ws.rs.FormParam;
 
 /**
- * Die Flugzeuge die von Airport zu Airport fliegen.
+ * the airplaneclass that flies between airports
  *
  * @author Gabriel Egli
  * @version 1.1

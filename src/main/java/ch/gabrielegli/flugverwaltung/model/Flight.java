@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 import javax.ws.rs.FormParam;
 
 /**
- * Die Flight-Klasse welche die Verbindung zwischen dem Airport und dem Airplane herstellt.
+ * the flightclass that creates a connection between the airplane- and airportclass.
  *
  * @author Gabriel Egli
  * @version 1.1

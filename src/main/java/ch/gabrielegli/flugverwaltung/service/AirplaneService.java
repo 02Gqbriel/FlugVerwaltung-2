@@ -28,7 +28,7 @@ public class AirplaneService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response GetAllPlanes(@QueryParam("sort") String sort) {
+    public Response getAllAirplanes(@QueryParam("sort") String sort) {
         List<Airplane> airplanes = DataHandler.readAllAirplanes();
         int status = 200;
 
@@ -70,7 +70,11 @@ public class AirplaneService {
     @GET
     @Path("get")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response GetOnePlane(@QueryParam("uuid") String uuid) {
+    public Response getOneAirplane(
+            @QueryParam("uuid")
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}") String uuid
+    ) {
         Airplane airplane = DataHandler.readAirplaneByUUID(uuid);
         int status = 200;
 
@@ -93,10 +97,11 @@ public class AirplaneService {
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response DeleteOneAirplane(@QueryParam("uuid")
-                                      @NotEmpty
-                                      @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                                              String uuid) {
+    public Response deleteOneAirplane(
+            @QueryParam("uuid")
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}") String uuid
+    ) {
         int status = 200;
 
         if (!DataHandler.deleteAirplane(uuid)) {
@@ -115,7 +120,7 @@ public class AirplaneService {
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response AddOneAirplane(
+    public Response addOneAirplane(
             @Valid @BeanParam Airplane airplane
     ) {
 
@@ -137,7 +142,7 @@ public class AirplaneService {
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response UpdateOneAirplane(
+    public Response updateOneAirplane(
             @Valid @BeanParam Airplane airplane
     ) {
         int status = 200;

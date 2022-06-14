@@ -9,7 +9,7 @@ import javax.ws.rs.FormParam;
 import java.util.ArrayList;
 
 /**
- * Die Flughafenklasse welche die einzelnen Flüge Verwaltet.
+ * the aiportclass that coordinates flights and airplanes
  *
  * @author Gabriel Egli
  * @version 1.1
