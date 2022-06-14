@@ -267,7 +267,7 @@ public class DataHandler {
         FileOutputStream fileOutputStream = null;
         Writer fileWriter;
 
-        String flugzeugPath = Config.getProperty("flugzeugJSON");
+        String flugzeugPath = Config.getProperty("airplaneJSON");
         try {
             fileOutputStream = new FileOutputStream(flugzeugPath);
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
@@ -307,7 +307,7 @@ public class DataHandler {
         FileOutputStream fileOutputStream = null;
         Writer fileWriter;
 
-        String flughafenPath = Config.getProperty("flughafenJSON");
+        String flughafenPath = Config.getProperty("airportJSON");
         try {
             fileOutputStream = new FileOutputStream(flughafenPath);
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));

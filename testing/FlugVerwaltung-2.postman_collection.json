@@ -1,0 +1,1500 @@
+{
+  "info": {
+    "_postman_id": "dc2d2428-2365-4a34-8c5e-422037d6c14b",
+    "name": "FlugVerwaltung-2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Flight",
+      "item": [
+        {
+          "name": "Flight List",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response is JSON', function () {",
+                  "    pm.response.to.be.json;",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/list",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "flight",
+                "list"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Flight List sorted",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response is JSON', function () {",
+                  "    pm.response.to.be.json;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/list?sort=departureTime",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "flight",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "sort",
+                  "value": "departureTime"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Flight List sorted failure",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test('Response is Error', function () {",
+                  "    pm.response.to.be.error;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/list?sort=fail",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "flight",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "sort",
+                  "value": "fail"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Flight Get by UUID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response is JSON', function () {",
+                  "    pm.response.to.be.json;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/get?uuid=69edd9ad-310b-4b36-82a1-82f8c01e2a99",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "flight",
+                "get"
+              ],
+              "query": [
+                {
+                  "key": "uuid",
+                  "value": "69edd9ad-310b-4b36-82a1-82f8c01e2a99"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Flight Get by UUID failure",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test('Response is Error', function () {",
+                  "    pm.response.to.be.error;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/get?uuid=123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "flight",
+                "get"
+              ],
+              "query": [
+                {
+                  "key": "uuid",
+                  "value": "123"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Flight Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "arrivalTime",
+                  "value": "11:35",
+                  "type": "text"
+                },
+                {
+                  "key": "departureTime",
+                  "value": "13:15",
+                  "type": "text"
+                },
+                {
+                  "key": "flightUUID",
+                  "value": "6be44044-1282-41c4-9a00-0c3b83c2d7b0",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "flight",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Flight Create failure",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "arrivalTime",
+                  "value": "11:355",
+                  "type": "text"
+                },
+                {
+                  "key": "departureTime",
+                  "value": "13:1",
+                  "type": "text"
+                },
+                {
+                  "key": "flightUUID",
+                  "value": "6be44034-1282-41c4-9a00-0c3b83c2d7b0",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "flight",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Flight Update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "arrivalTime",
+                  "value": "10:20",
+                  "type": "text"
+                },
+                {
+                  "key": "departureTime",
+                  "value": "13:15",
+                  "type": "text"
+                },
+                {
+                  "key": "flightUUID",
+                  "value": "6be44044-1282-41c4-9a00-0c3b83c2d7b0",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/update",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "flight",
+                "update"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Flight Update failure",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "arrivalTime",
+                  "value": "10:203",
+                  "type": "text"
+                },
+                {
+                  "key": "departureTime",
+                  "value": "13:1",
+                  "type": "text"
+                },
+                {
+                  "key": "flightUUID",
+                  "value": "6be44044-1282-41c4-9a00-0c3b83c2d7b0",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/update",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "flight",
+                "update"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Flight Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/delete?uuid=6be44044-1282-41c4-9a00-0c3b83c2d7b0",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "flight",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "uuid",
+                  "value": "6be44044-1282-41c4-9a00-0c3b83c2d7b0"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Flight Delete failure",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/flight/delete?uuid=6be44044-1282-41c4-9a00-0c3b83c2d7g9",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "flight",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "uuid",
+                  "value": "6be44044-1282-41c4-9a00-0c3b83c2d7g9"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Airplane",
+      "item": [
+        {
+          "name": "Airplane List",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response is JSON', function () {",
+                  "    pm.response.to.be.json;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/list",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airplane",
+                "list"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airplane List sorted",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response is JSON', function () {",
+                  "    pm.response.to.be.json;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/list?sort=airline",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airplane",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "sort",
+                  "value": "airline"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airplane List sorted failure",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test('Response is Error', function () {",
+                  "    pm.response.to.be.error;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/list?sort=fehler",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airplane",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "sort",
+                  "value": "fehler"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airplane Get by UUID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response is JSON', function () {",
+                  "    pm.response.to.be.json;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/get?uuid=08d9b8e2-a182-40fa-97f8-2ae0402b939f",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airplane",
+                "get"
+              ],
+              "query": [
+                {
+                  "key": "uuid",
+                  "value": "08d9b8e2-a182-40fa-97f8-2ae0402b939f"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airplane Get by UUID failure",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test('Response is Error', function () {",
+                  "    pm.response.to.be.error;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/get?uuid=123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airplane",
+                "get"
+              ],
+              "query": [
+                {
+                  "key": "uuid",
+                  "value": "123"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airplane Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "airplaneUUID",
+                  "value": "781fd1a1-49af-42cb-b862-1bf27355be99",
+                  "type": "text"
+                },
+                {
+                  "key": "airline",
+                  "value": "Test Air",
+                  "type": "text"
+                },
+                {
+                  "key": "modelName",
+                  "value": "Boeng 123",
+                  "type": "text"
+                },
+                {
+                  "key": "flightNumber",
+                  "value": "LT 200",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airplane",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airplane Create failure",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "airplaneUUID",
+                  "value": "781fd1a1-49af-42cb-b862-1bf27355be9",
+                  "type": "text"
+                },
+                {
+                  "key": "airline",
+                  "value": "Test Air",
+                  "type": "text"
+                },
+                {
+                  "key": "modelName",
+                  "value": "Boeng 123",
+                  "type": "text"
+                },
+                {
+                  "key": "flightNumber",
+                  "value": "LT 200",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airplane",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airplane Update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "airplaneUUID",
+                  "value": "781fd1a1-49af-42cb-b862-1bf27355be99",
+                  "type": "text"
+                },
+                {
+                  "key": "airline",
+                  "value": "Test Air",
+                  "type": "text"
+                },
+                {
+                  "key": "modelName",
+                  "value": "Boeng 321",
+                  "type": "text"
+                },
+                {
+                  "key": "flightNumber",
+                  "value": "LT 200",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/update",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airplane",
+                "update"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airplane Update failure",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "airplaneUUID",
+                  "value": "781fd1a1-49af-42cb-b862-1bf27355be9",
+                  "type": "text"
+                },
+                {
+                  "key": "airline",
+                  "value": "Test Air",
+                  "type": "text"
+                },
+                {
+                  "key": "modelName",
+                  "value": "Boeng 321",
+                  "type": "text"
+                },
+                {
+                  "key": "flightNumber",
+                  "value": "LT 200",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/update",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airplane",
+                "update"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airplane Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/delete?uuid=781fd1a1-49af-42cb-b862-1bf27355be99",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airplane",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "uuid",
+                  "value": "781fd1a1-49af-42cb-b862-1bf27355be99"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airplane Delete failure",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airplane/delete?uuid=781fd1a1-49af-42cb-b862-1bf27355be",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airplane",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "uuid",
+                  "value": "781fd1a1-49af-42cb-b862-1bf27355be"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Airport",
+      "item": [
+        {
+          "name": "Airport List",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response is JSON', function () {",
+                  "    pm.response.to.be.json;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/list",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airport",
+                "list"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airport List sorted",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response is JSON', function () {",
+                  "    pm.response.to.be.json;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/list?sort=location",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airport",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "sort",
+                  "value": "location"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airport List sorted failure",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test('Response is Error', function () {",
+                  "    pm.response.to.be.error;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/list?sort=fehler",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airport",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "sort",
+                  "value": "fehler"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airport Get by UUID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response is JSON', function () {",
+                  "    pm.response.to.be.json;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/get?uuid=01967a4e-a766-4b31-a280-1370d3c45327",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airport",
+                "get"
+              ],
+              "query": [
+                {
+                  "key": "uuid",
+                  "value": "01967a4e-a766-4b31-a280-1370d3c45327"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airport Get by UUID failure",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test('Response is JSON', function () {",
+                  "    pm.response.to.be.error;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/get?uuid=123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airport",
+                "get"
+              ],
+              "query": [
+                {
+                  "key": "uuid",
+                  "value": "123"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airport Create",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test('Response is JSON', function () {",
+                  "    pm.response.to.be.error;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "airportUUID",
+                  "value": "568429ce-b518-48eb-9628-4fd1ad662468",
+                  "type": "text"
+                },
+                {
+                  "key": "location",
+                  "value": "Zuerich",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airport",
+                "create"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airport Create failure",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test('Response is JSON', function () {",
+                  "    pm.response.to.be.error;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "airportUUID",
+                  "value": "568429ce-b518-48eb-9628-4fd1ad6624",
+                  "type": "text"
+                },
+                {
+                  "key": "location",
+                  "value": "Altstette",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airport",
+                "create"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airport Update",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test('Response is JSON', function () {",
+                  "    pm.response.to.be.error;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "airportUUID",
+                  "value": "568429ce-b518-48eb-9628-4fd1ad662468",
+                  "type": "text"
+                },
+                {
+                  "key": "location",
+                  "value": "Attelfingen",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/update",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airport",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airport Update failure",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test('Response is JSON', function () {",
+                  "    pm.response.to.be.error;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "airportUUID",
+                  "value": "568429ce-b518-48eb-9628-4fd1ad6624",
+                  "type": "text"
+                },
+                {
+                  "key": "location",
+                  "value": "Attelfingen",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/update",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airport",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airport Delete",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test('Response is JSON', function () {",
+                  "    pm.response.to.be.error;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/delete?uuid=568429ce-b518-48eb-9628-4fd1ad662468",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airport",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "uuid",
+                  "value": "568429ce-b518-48eb-9628-4fd1ad662468"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Airport Delete failure",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code ist 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test('Response is JSON', function () {",
+                  "    pm.response.to.be.error;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/FlugVerwaltung-2-1.0/api/airport/delete?uuid=568429ce-b518-48eb-9628-4fd1ad662468",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "FlugVerwaltung-2-1.0",
+                "api",
+                "airport",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "uuid",
+                  "value": "568429ce-b518-48eb-9628-4fd1ad662468"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

@@ -32,12 +32,12 @@ public class AirportService {
         int status = 200;
 
         if (sort != null) {
-            if (sort == "airportUUID" && sort == "location") {
+            if (sort.equals("airportUUID") || sort.equals("location")) {
                 flugahafens.sort((f1, f2) -> {
                     switch (sort) {
                         case "airportUUID":
                             return f1.getAirportUUID().compareTo(f2.getAirportUUID());
-                        case "ort":
+                        case "location":
                             return f1.getLocation().compareTo(f2.getLocation());
                         default:
                             return 0;
