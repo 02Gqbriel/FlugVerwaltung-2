@@ -14,21 +14,6 @@ const data = {airplanes: [], airports: [], flights: []},
 window.onload = async () => {
     const root = document.querySelector("#root");
 
-    const editButtons = document.querySelectorAll(".editSvg"),
-        deleteButtons = document.querySelectorAll(".deleteSvg");
-
-    editButtons.forEach((e, i) => {
-        e.addEventListener("click", () => {
-            console.log(e)
-        })
-    });
-
-    deleteButtons.forEach((e, i) => {
-        e.addEventListener("click", () => {
-            console.log(e)
-        })
-    });
-
     (function waitForData() {
         if (data.airplanes.length == 0 || data.airports.length == 0 || data.flights.length == 0) {
             setTimeout(waitForData, 100);
@@ -81,6 +66,7 @@ window.onload = async () => {
 
                     if (keys[k] != undefined && keys[k].includes("UUID")) {
                         tr.dataset.uuid = item[keys[k]];
+                        tr.dataset.class = keyArrays[i];
                         continue;
                     }
 
@@ -100,6 +86,30 @@ window.onload = async () => {
             root.appendChild(div);
             root.appendChild(hr);
         }
+
+        const editButtons = document.querySelectorAll(".editSvg"),
+            deleteButtons = document.querySelectorAll(".deleteSvg");
+
+        const modal = document.querySelector("#modal");
+
+        modal.show = () => {
+            modal.className = "absolute"
+        }
+
+        editButtons.forEach((e, i) => {
+            e.onclick = async () => {
+
+            };
+        });
+
+        deleteButtons.forEach((e, i) => {
+            const parent = e.parentElement.parentElement;
+
+            e.onclick = async () => {
+                await fetch(`/FlugVerwaltung-2-1.0/api/${parent.dataset.class.slice(0, parent.dataset.class.length - 1)}/delete?uuid=${e.parentElement.parentElement.dataset.uuid}`, {method: "DELETE"});
+                window.location.reload();
+            };
+        });
     }
 }
 
