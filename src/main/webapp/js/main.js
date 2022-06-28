@@ -90,15 +90,11 @@ window.onload = async () => {
         const editButtons = document.querySelectorAll(".editSvg"),
             deleteButtons = document.querySelectorAll(".deleteSvg");
 
-        const modal = document.querySelector("#modal");
-
-        modal.show = () => {
-            modal.className = "absolute"
-        }
-
         editButtons.forEach((e, i) => {
-            e.onclick = async () => {
+            const parent = e.parentElement.parentElement;
 
+            e.onclick = async () => {
+                window.location.assign(`/FlugVerwaltung-2-1.0/edit.html?uuid=${parent.dataset.uuid}&req=${parent.dataset.class.slice(0, parent.dataset.class.length - 1)}`)
             };
         });
 
@@ -106,7 +102,7 @@ window.onload = async () => {
             const parent = e.parentElement.parentElement;
 
             e.onclick = async () => {
-                await fetch(`/FlugVerwaltung-2-1.0/api/${parent.dataset.class.slice(0, parent.dataset.class.length - 1)}/delete?uuid=${e.parentElement.parentElement.dataset.uuid}`, {method: "DELETE"});
+                await fetch(`/FlugVerwaltung-2-1.0/api/${parent.dataset.class.slice(0, parent.dataset.class.length - 1)}/delete?uuid=${parent.dataset.uuid}`, {method: "DELETE"});
                 window.location.reload();
             };
         });

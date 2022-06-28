@@ -3,6 +3,7 @@ package ch.gabrielegli.flugverwaltung.service;
 import ch.gabrielegli.flugverwaltung.data.DataHandler;
 import ch.gabrielegli.flugverwaltung.model.Airplane;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -25,10 +26,11 @@ public class AirplaneService {
      * @param sort the sort parameter by which the should be sorted
      * @return the json response
      */
+    @RolesAllowed({"admin", "user"})
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllAirplanes(@QueryParam("sort") String sort) {
+    public Response getAllAirplanes(@CookieParam("userRole") String userRole, @QueryParam("sort") String sort) {
         List<Airplane> airplanes = DataHandler.readAllAirplanes();
         int status = 200;
 
@@ -67,10 +69,12 @@ public class AirplaneService {
      * @param uuid the query uuid which is requested
      * @return the json response
      */
+    @RolesAllowed({"admin", "user"})
     @GET
     @Path("get")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getOneAirplane(
+            @CookieParam("userRole") String userRole,
             @QueryParam("uuid")
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}") String uuid
@@ -94,10 +98,12 @@ public class AirplaneService {
      * @param uuid the key
      * @return Response
      */
+    @RolesAllowed({"admin", "user"})
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteOneAirplane(
+            @CookieParam("userRole") String userRole,
             @QueryParam("uuid")
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}") String uuid
@@ -117,10 +123,12 @@ public class AirplaneService {
      * @param airplane airplane
      * @return Response
      */
+    @RolesAllowed({"admin", "user"})
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response addOneAirplane(
+            @CookieParam("userRole") String userRole,
             @Valid @BeanParam Airplane airplane
     ) {
 
@@ -139,10 +147,12 @@ public class AirplaneService {
      * @param airplane airplane
      * @return Response
      */
+    @RolesAllowed({"admin", "user"})
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateOneAirplane(
+            @CookieParam("userRole") String userRole,
             @Valid @BeanParam Airplane airplane,
             @FormParam("airplaneUUID")
             @NotEmpty

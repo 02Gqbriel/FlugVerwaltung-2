@@ -3,6 +3,7 @@ package ch.gabrielegli.flugverwaltung.data;
 import ch.gabrielegli.flugverwaltung.model.Airplane;
 import ch.gabrielegli.flugverwaltung.model.Airport;
 import ch.gabrielegli.flugverwaltung.model.Flight;
+import ch.gabrielegli.flugverwaltung.model.User;
 import ch.gabrielegli.flugverwaltung.service.Config;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,6 +23,13 @@ public class DataHandler {
     private static List<Flight> flightList = null;
     private static List<Airplane> airplaneList = null;
     private static List<Airport> airportList = null;
+    private static List<User> userList = null;
+
+    /**
+     * private constructor defeats instantiation
+     */
+    private DataHandler() {
+    }
 
     /**
      * reads all flights
@@ -201,6 +209,24 @@ public class DataHandler {
     }
 
     /**
+     * reads a user by the username/password provided
+     *
+     * @param username
+     * @param password
+     * @return user-object
+     */
+    public static User readUser(String username, String password) {
+        User user = new User();
+        for (User entry : getUserList()) {
+            if (entry.getUsername().equals(username) &&
+                    entry.getPassword().equals(password)) {
+                user = entry;
+            }
+        }
+        return user;
+    }
+
+    /**
      * reads the flights from the JSON-file
      */
     private static void readFlightJSON() {
@@ -318,6 +344,26 @@ public class DataHandler {
     }
 
     /**
+     * reads the users from the JSON-file
+     */
+    private static void readUserJSON() {
+        try {
+            byte[] jsonData = Files.readAllBytes(
+                    Paths.get(
+                            Config.getProperty("userJSON")
+                    )
+            );
+            ObjectMapper objectMapper = new ObjectMapper();
+            User[] users = objectMapper.readValue(jsonData, User[].class);
+            for (User user : users) {
+                getUserList().add(user);
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
      * gets flightList
      *
      * @return value of flightList
@@ -387,5 +433,27 @@ public class DataHandler {
      */
     private static void setAirportList(List<Airport> airportList) {
         DataHandler.airportList = airportList;
+    }
+
+    /**
+     * gets userList
+     *
+     * @return value of userList
+     */
+    public static List<User> getUserList() {
+        if (DataHandler.userList == null) {
+            DataHandler.setUserList(new ArrayList<>());
+            readUserJSON();
+        }
+        return userList;
+    }
+
+    /**
+     * sets userList
+     *
+     * @param userList the value to set
+     */
+    public static void setUserList(List<User> userList) {
+        DataHandler.userList = userList;
     }
 }
