@@ -33,9 +33,9 @@ public class Flight {
 
     @JsonIgnore
     private Airplane airplane;
+
     @JsonIgnore
     private Airport departure;
-
     @JsonIgnore
     private Airport destination;
 

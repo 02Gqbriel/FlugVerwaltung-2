@@ -9,6 +9,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
 import java.util.HashMap;
 import java.util.List;
@@ -26,11 +27,12 @@ public class AirplaneService {
      * @param sort the sort parameter by which the should be sorted
      * @return the json response
      */
-    @RolesAllowed({"admin", "user"})
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllAirplanes(@CookieParam("userRole") String userRole, @QueryParam("sort") String sort) {
+        if (!isUserPermitted(userRole, new String[]{"admin", "user"})) return Response.status(401).build();
+
         List<Airplane> airplanes = DataHandler.readAllAirplanes();
         int status = 200;
 
@@ -55,11 +57,22 @@ public class AirplaneService {
             }
         }
 
+        NewCookie cookie = new NewCookie(
+                "userRole",
+                userRole,
+                "/",
+                "",
+                "Login-Cookie",
+                600,
+                false
+        );
+
         return Response
                 .status(status)
                 .entity(status == 400 ? new HashMap<String, String>() {{
                     put("MESSAGE", "Parameter Error: " + sort + " Not Valid Parameter");
                 }} : airplanes)
+                .cookie(cookie)
                 .build();
     }
 
@@ -79,16 +92,29 @@ public class AirplaneService {
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}") String uuid
     ) {
+        if (!isUserPermitted(userRole, new String[]{"admin", "user"})) return Response.status(401).build();
+
         Airplane airplane = DataHandler.readAirplaneByUUID(uuid);
         int status = 200;
 
         if (airplane == null) status = 404;
+
+        NewCookie cookie = new NewCookie(
+                "userRole",
+                userRole,
+                "/",
+                "",
+                "Login-Cookie",
+                600,
+                false
+        );
 
         return Response
                 .status(status)
                 .entity(status == 404 ? new HashMap<String, String>() {{
                     put("MESSAGE", "Not Found");
                 }} : airplane)
+                .cookie(cookie)
                 .build();
     }
 
@@ -108,13 +134,25 @@ public class AirplaneService {
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}") String uuid
     ) {
+        if (!isUserPermitted(userRole, new String[]{"admin"})) return Response.status(401).build();
+
         int status = 200;
 
         if (!DataHandler.deleteAirplane(uuid)) {
             status = 404;
         }
 
-        return Response.status(status).entity(status == 404 ? "Not Found" : "Object deleted").build();
+        NewCookie cookie = new NewCookie(
+                "userRole",
+                userRole,
+                "/",
+                "",
+                "Login-Cookie",
+                600,
+                false
+        );
+
+        return Response.status(status).entity(status == 404 ? "Not Found" : "Object deleted").cookie(cookie).build();
     }
 
     /**
@@ -123,7 +161,6 @@ public class AirplaneService {
      * @param airplane airplane
      * @return Response
      */
-    @RolesAllowed({"admin", "user"})
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
@@ -131,6 +168,7 @@ public class AirplaneService {
             @CookieParam("userRole") String userRole,
             @Valid @BeanParam Airplane airplane
     ) {
+        if (!isUserPermitted(userRole, new String[]{"admin"})) return Response.status(401).build();
 
         if (airplane.getAirplaneUUID() == null) {
             airplane.setAirplaneUUID(UUID.randomUUID().toString());
@@ -138,7 +176,17 @@ public class AirplaneService {
 
         DataHandler.insertAirplane(airplane);
 
-        return Response.status(200).entity("Object added").build();
+        NewCookie cookie = new NewCookie(
+                "userRole",
+                userRole,
+                "/",
+                "",
+                "Login-Cookie",
+                600,
+                false
+        );
+
+        return Response.status(200).entity("Object added").cookie(cookie).build();
     }
 
     /**
@@ -159,6 +207,8 @@ public class AirplaneService {
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}") String uuid
 
     ) {
+        if (!isUserPermitted(userRole, new String[]{"admin"})) return Response.status(401).build();
+
         int status = 200;
         Airplane old = DataHandler.readAirplaneByUUID(uuid);
 
@@ -171,9 +221,30 @@ public class AirplaneService {
             status = 404;
         }
 
+        NewCookie cookie = new NewCookie(
+                "userRole",
+                userRole,
+                "/",
+                "",
+                "Login-Cookie",
+                600,
+                false
+        );
+
         return Response
                 .status(status)
                 .entity(status == 404 ? "Not Found" : "Object updated")
+                .cookie(cookie)
                 .build();
+    }
+
+    private boolean isUserPermitted(String userRole, String[] roles) {
+        if (userRole == null || userRole.length() == 0) return false;
+
+        for (int i = 0; i < roles.length; i++) {
+            if (roles[i].equalsIgnoreCase(userRole)) return true;
+        }
+
+        return false;
     }
 }

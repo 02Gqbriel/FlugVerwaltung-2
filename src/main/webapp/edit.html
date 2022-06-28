@@ -9,6 +9,55 @@
     <script src="./js/edit.js"></script>
 </head>
 <body>
+<header class="max-w-screen-lg mx-auto flex justify-between items-center my-2">
+    <span class="text-2xl font-bold"><a href=".">FlugVergewaltung-2</a></span>
+
+    <nav>
+        <a class="p-1 bg-slate-400 rounded hover:bg-slate-300 active:ring-2 ring-slate-600 ring-offset-1"
+           href="./login.html" id="login">
+            Login
+        </a>
+        <a class="p-1 bg-slate-400 rounded hover:bg-slate-300 active:ring-2 ring-slate-600 ring-offset-1 hidden"
+           id="logout">
+            Logout
+        </a>
+        <script>
+            const login = document.querySelector("#login"),
+                logout = document.querySelector("#logout");
+
+            const userRole = localStorage.getItem("userRole");
+
+            if (userRole == null || userRole == "guest") {
+                login.classList.remove("hidden");
+                logout.classList.add("hidden");
+            } else {
+                logout.classList.remove("hidden");
+                login.classList.add("hidden");
+            }
+
+            logout.onclick = () => {
+                (function () {
+                    var cookies = document.cookie.split("; ");
+                    for (var c = 0; c < cookies.length; c++) {
+                        var d = window.location.hostname.split(".");
+                        while (d.length > 0) {
+                            var cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ;path=';
+                            var p = location.pathname.split('/');
+                            document.cookie = cookieBase + '/';
+                            while (p.length > 0) {
+                                document.cookie = cookieBase + p.join('/');
+                                p.pop();
+                            }
+                            d.shift();
+                        }
+                    }
+                })();
+                localStorage.setItem("userRole", "guest");
+                window.location.reload();
+            }
+        </script>
+    </nav>
+</header>
 <h1 class="font-medium text-2xl text-center m-5 mb-10">Bearbeiten</h1>
 <div id="form"></div>
 </body>

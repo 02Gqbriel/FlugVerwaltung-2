@@ -21,8 +21,8 @@ public class User {
      */
     public User() {
         this.userUUID = UUID.randomUUID().toString();
-        this.username = "";
-        this.password = "";
+        this.username = "guest";
+        this.password = null;
         this.role = "guest";
     }
 

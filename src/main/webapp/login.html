@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link as="script" href="https://cdn.tailwindcss.com?plugins=forms" rel="preload"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <title>Login - FlugVerwaltung</title>
+    <style>
+        input {
+            border-radius: 10px !important;
+        }
+    </style>
+</head>
+<body class="flex items-center h-screen justify-center ">
+<div class="max-w-md relative w-full h-fit mx-auto flex flex-col space-y-10 pb-24">
+    <h1 class="font-medium text-2xl text-center">Login</h1>
+
+    <div class="flex justify-between items-center ">
+        <label for="username">Username:</label>
+        <input class="i" id="username" name="username" type="text">
+    </div>
+    <div class="flex justify-between items-center">
+        <label for="password">Password:</label>
+        <input class="i" id="password" name="password" type="password">
+    </div>
+    <button class="p-1 w-20 absolute right-0 bottom-7 rounded bg-blue-500 border-2 border-blue-500 hover:border-blue-600 active:bg-blue-400 text-white"
+            id="btn">
+        Submit
+    </button>
+
+    <script>
+        document.querySelector("#btn").onclick = async () => {
+            let data = [null, null];
+
+            [...document.querySelectorAll(".i")].forEach((e, i) => {
+                if (e.value == null) alert(e.name + " is empty");
+                data[i] = e.value;
+            })
+
+            data = `username=${data[0]}&password=${data[1]}`;
+
+            const res = await fetch(
+                "/FlugVerwaltung-2-1.0/api/user/login",
+                {
+                    method: "POST",
+                    body: data,
+                    headers: {"Content-Type": "application/x-www-form-urlencoded"}
+                }
+            );
+
+            if (!res.ok) {
+                localStorage.setItem("userRole", "guest");
+                return alert("Username or Password is wrong");
+            }
+
+            localStorage.setItem("userRole", await res.text());
+            window.location.assign("/FlugVerwaltung-2-1.0/")
+        }
+    </script>
+</div>
+</body>
+</html>

@@ -60,8 +60,10 @@ const innerElements = async () => {
             {method: "PUT", body: data, headers: {"Content-Type": "application/x-www-form-urlencoded"}});
 
         if (!res.ok) {
-            alert("Ups somethin went wrong! Check if format is correct");
+            return alert("Ups somethin went wrong! Check if format is correct");
         }
+
+        window.location.assign("/FlugVerwaltung-2-1.0")
     }
 
     container.appendChild(button);

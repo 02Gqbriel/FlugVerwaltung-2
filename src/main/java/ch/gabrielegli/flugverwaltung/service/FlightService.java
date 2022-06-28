@@ -28,7 +28,9 @@ public class FlightService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllFlights(@QueryParam("sort") String sort) {
+    public Response getAllFlights(@CookieParam("userRole") String userRole, @QueryParam("sort") String sort) {
+        if (!isUserPermitted(userRole, new String[]{"admin", "user"})) return Response.status(401).build();
+
         List<Flight> flights = DataHandler.readAllFlights();
         int status = 200;
 
@@ -70,10 +72,13 @@ public class FlightService {
     @Path("get")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getOneFlight(
+            @CookieParam("userRole") String userRole,
             @QueryParam("uuid")
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}") String uuid
     ) {
+        if (!isUserPermitted(userRole, new String[]{"admin", "user"})) return Response.status(401).build();
+
         Flight flight = DataHandler.readFlightByUUID(uuid);
         int status = 200;
 
@@ -97,10 +102,13 @@ public class FlightService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteOneFlight(
+            @CookieParam("userRole") String userRole,
             @QueryParam("uuid")
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}") String uuid
     ) {
+        if (!isUserPermitted(userRole, new String[]{"admin"})) return Response.status(401).build();
+
         int status = 200;
 
         if (!DataHandler.deleteFlight(uuid)) {
@@ -120,8 +128,11 @@ public class FlightService {
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response addOneFlight(
+            @CookieParam("userRole") String userRole,
             @BeanParam @Valid Flight flight
     ) {
+        if (!isUserPermitted(userRole, new String[]{"admin"})) return Response.status(401).build();
+
         if (flight.getFlightUUID() == null) {
             flight.setFlightUUID(UUID.randomUUID().toString());
         }
@@ -141,11 +152,14 @@ public class FlightService {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateOneFlight(
+            @CookieParam("userRole") String userRole,
             @BeanParam @Valid Flight flight,
             @FormParam("flightUUID")
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}") String uuid
     ) {
+        if (!isUserPermitted(userRole, new String[]{"admin"})) return Response.status(401).build();
+
         int status = 200;
         Flight flight2 = DataHandler.readFlightByUUID(uuid);
 
@@ -161,5 +175,15 @@ public class FlightService {
                 .status(status)
                 .entity(status == 404 ? "Not Found" : "Object updated")
                 .build();
+    }
+
+    private boolean isUserPermitted(String userRole, String[] roles) {
+        if (userRole == null || userRole.equals(" ") || userRole.equals("")) return false;
+
+        for (int i = 0; i < roles.length; i++) {
+            if (roles[i].equalsIgnoreCase(userRole)) return true;
+        }
+
+        return false;
     }
 }

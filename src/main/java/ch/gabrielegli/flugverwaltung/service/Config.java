@@ -71,6 +71,7 @@ public class Config extends Application {
         providers.add(FlightService.class);
         providers.add(AirportService.class);
         providers.add(AirplaneService.class);
+        providers.add(UserService.class);
         return providers;
     }
 }

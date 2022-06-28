@@ -1,21 +1,25 @@
 const data = {airplanes: [], airports: [], flights: []},
     urls = ["/FlugVerwaltung-2-1.0/api/airplane/list", "/FlugVerwaltung-2-1.0/api/airport/list", "/FlugVerwaltung-2-1.0/api/flight/list"];
 
+var done = false;
+
 (async () => {
     const keyArrays = Object.keys(data);
 
     for (let i = 0; i < keyArrays.length; i++) {
         const res = await fetch(urls[i] + "");
-
+        if (!res.ok) continue;
         data[keyArrays[i]] = await res.json();
     }
+
+    done = true;
 })();
 
 window.onload = async () => {
     const root = document.querySelector("#root");
 
     (function waitForData() {
-        if (data.airplanes.length == 0 || data.airports.length == 0 || data.flights.length == 0) {
+        if (!done) {
             setTimeout(waitForData, 100);
         } else {
             visualizeData();
@@ -28,6 +32,7 @@ window.onload = async () => {
 
 
         for (let i = 0; i < keyArrays.length; i++) {
+            if (data[keyArrays[i]].length == 0) continue;
             const title = document.createElement("h3"),
                 table = document.createElement("table"),
                 div = document.createElement("div");
@@ -38,6 +43,7 @@ window.onload = async () => {
             title.className = "text-xl mb-1"
 
             for (let j = 0; j < data[keyArrays[i]].length; j++) {
+
                 let item = data[keyArrays[i]][j],
                     keys = Object.keys(item);
 
@@ -86,6 +92,8 @@ window.onload = async () => {
             root.appendChild(div);
             root.appendChild(hr);
         }
+
+        console.log(data);
 
         const editButtons = document.querySelectorAll(".editSvg"),
             deleteButtons = document.querySelectorAll(".deleteSvg");

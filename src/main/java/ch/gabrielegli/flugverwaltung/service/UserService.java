@@ -4,10 +4,7 @@ import ch.gabrielegli.flugverwaltung.data.DataHandler;
 import ch.gabrielegli.flugverwaltung.model.User;
 
 import javax.annotation.security.PermitAll;
-import javax.ws.rs.FormParam;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
@@ -15,7 +12,6 @@ import javax.ws.rs.core.Response;
 @Path("user")
 public class UserService {
 
-    @PermitAll
     @Path("login")
     @POST
     @Produces(MediaType.TEXT_PLAIN)
@@ -41,10 +37,9 @@ public class UserService {
                 false
         );
 
-        return Response.status(status).entity(status == 404 ? "login failed" : "login successful").cookie(userRoleCookie).build();
+        return Response.status(status).entity(user.getRole()).cookie(userRoleCookie).build();
     }
 
-    @PermitAll
     @Path("logout")
     @POST
     @Produces(MediaType.TEXT_PLAIN)
@@ -61,5 +56,13 @@ public class UserService {
         );
 
         return Response.status(200).entity("logout successful").cookie(userRoleCookie).build();
+    }
+
+    @PermitAll
+    @Path("list")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getUserList() {
+        return Response.status(200).entity(DataHandler.getUserList()).build();
     }
 }

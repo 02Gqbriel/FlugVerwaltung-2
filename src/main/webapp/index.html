@@ -3,31 +3,68 @@
 
 <head>
     <meta charset="UTF-8"/>
-    <link as="script" href="https://cdn.tailwindcss.com" rel="preload"/>
+    <link as="script" href="https://cdn.tailwindcss.com?plugins=forms" rel="preload"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <script src="./js/main.js"></script>
     <title>List - FlugVerwaltung</title>
 </head>
 
 <body class="max-w-screen-lg m-auto pt-1 flex flex-col justify-between min-h-screen">
 <header class="flex justify-between items-center my-2">
-    <span class="text-2xl font-bold"><a href=".">FlugVergewaltigung-2</a></span>
+    <span class="text-2xl font-bold"><a href=".">FlugVergewaltung-2</a></span>
 
     <nav>
-        <a class="p-1 bg-slate-400 rounded hover:bg-slate-300 active:ring-2 ring-slate-600 ring-offset-1" href="./">
+        <a class="py-1 px-2 bg-blue-500 rounded hover:bg-blue-400 active:ring-2 ring-blue-600 ring-offset-1 text-white"
+           href="./login.html" id="login">
             Login
         </a>
+        <a class="py-1 px-2 bg-blue-500 rounded hover:bg-blue-400 active:ring-2 ring-blue-600 ring-offset-1 text-white hidden"
+           id="logout">
+            Logout
+        </a>
+        <script>
+            const login = document.querySelector("#login"),
+                logout = document.querySelector("#logout");
+
+            const userRole = localStorage.getItem("userRole");
+
+            if (userRole == null || userRole == "guest") {
+                login.classList.remove("hidden");
+                logout.classList.add("hidden");
+                window.onload = () => document.querySelector("#root").innerHTML = "NOT ALLOWED"
+            } else {
+                logout.classList.remove("hidden");
+                login.classList.add("hidden");
+            }
+
+            logout.onclick = () => {
+                (function () {
+                    var cookies = document.cookie.split("; ");
+                    for (var c = 0; c < cookies.length; c++) {
+                        var d = window.location.hostname.split(".");
+                        while (d.length > 0) {
+                            var cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ;path=';
+                            var p = location.pathname.split('/');
+                            document.cookie = cookieBase + '/';
+                            while (p.length > 0) {
+                                document.cookie = cookieBase + p.join('/');
+                                p.pop();
+                            }
+                            d.shift();
+                        }
+                    }
+                })();
+                localStorage.setItem("userRole", "guest");
+                window.location.reload();
+            }
+        </script>
     </nav>
 </header>
 
 <main class="flex-auto flex flex-row items-center justify-between" id="root">
 
 </main>
-
-<div id="modal">
-
-</div>
 
 <footer class="text-center">@Gabriel Egli</footer>
 </body>
