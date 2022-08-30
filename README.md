@@ -8,7 +8,7 @@
 4. Move the JSON files from testing the folder to /home/bzz/data/
 5. Move the properties file from the testing folder to /home/bzz/webapp/
 
-Exclamer: THESE ABSOLUTE PATH WERE SET BY THE TEACHER
+Exclamer: THESE ABSOLUTE PATHs WERE SET BY THE TEACHER
 
 ## How to use
 
